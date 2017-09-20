@@ -10,11 +10,6 @@ TODO Finish this chapter \ldots\ and the rest!
 This section contains the research background relevant to our current research. Research conducted in 
 Latent Dirichlet Allocation (LDA) was introduced in 2003 by \cite{Blei2003LatentAllocation}. LDA is used for topic modeling on a corpera of documents. A lot of research has been performed in this area for different uses. The application of LDA ranges from image recognition to simple document topic discovery. LDA  In the following sections these different applications will be discussed.
 
-
-
-
-
-
 \section{Buiding blocks}
 To even analyse and compute the system logs discussed in this research existing frameworks and libraries had to be used. Software is required to perform extracting, loading and transforming the data in a useable form.
 
@@ -49,6 +44,44 @@ In this section we discuss the various tools used. There a lot more tools, but t
 
 \section{Dataset}
 The dataset was provided by Capgemini containing vrops, metering and syslogs. Eventually syslogs were chose as suitable data set for analysis. 
+
+\section{Evaluation Measures}
+To evaluate our implementation we use different metrics. Evaluating an unsupervised learning model depends on the application and the goal the model is made with. In our case the metrics are here to evaluate the models capability to generalise, using perplexity. The clusters are evaluated based on their inner similarity between documents and \" distance \" compared to other cluster centroids, using Silhouette co\"efficient. The distance metric used for silhouette co\"efficient is based on the KL-divergence metric. Human perception is also an important factor to evaluate the models, which isn't used in this research but we will discussion shortly.
+
+\subsection{Perplexity}\label{research:perplexity}
+In the original paper Blei introduces a general model evaluation metric \cite{Blei2003} to compare topic models. Perplexity can be used to compare the generalisation of a model on new unlabelled data.
+
+\[
+   \mathlarger{perplexity(\textbf{D}_{test}) = \exp{\Bigg \{ -\frac{\sum{}_{d=1}^{M}logp(\textbf{w}_d)}{\sum{}_{d=1}^{M}N_d} \Bigg \}}}
+\]
+
+Perplexity shows the perplexity on the test set of held out documents $\textbf{D}$. The nominator shows the sum in  corpus $M$ with document $d$, where the likelihood of each word in d is computed. The denominator consists of the count of words $N$ in document $d$.
+The lower the perplexity score the better a model generalises. 
+
+
+\subsection{Silhouette coefficient} \label{research:silhouette}
+The silhouette is used to measure between the cohesion and the separation of intra-clusters. In our model this measures the mean intra-cluster distance for each document and compares distance to the nearest-cluster distance.
+\[
+   \mathlarger{s(i) = \frac{b(i) - a(i)}{\max{\{ a(i), b(i)}\} } }
+\]
+Where $s_i$ is the silhouette of sample $i$ in the cluster. $a_i$ is the average distance for $i$ from all the objects in the cluster and $b_i$ the distance of $i$ from a cluster $b$ not containing $i$. 
+\[
+\mathlarger{-1 \leq s \le 1}
+\]
+
+The value of $s$ will be contained between $-1$ and $1$. If $s(i) = 1$ then we can say that the distance $i$  is a lot less in its own cluster then the nearest other cluster. If we take $s(i) = -1$ then the similarity of $i$ is higher in the other nearest cluster then its current cluster \cite{Rousseeuw1987Silhouettes:Analysis}.
+
+
+\subsection{Jensen-Shannon divergence and KL-Divergence}
+To evaluate the \cite{Shao2014TextCo-occurrence}
+
+Silhouette coefficient
+is used to compare the distance in between clusters, distinction of the topic centers.
+
+KL-divergence
+is used to compare the similarity between documents and to cluster similar documents with each other based upon their probability.
+
+\subsection{}
 
 \section{Data mining}
 
