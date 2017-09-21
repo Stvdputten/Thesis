@@ -61,10 +61,13 @@ The lower the perplexity score the better a model generalises.
 
 \subsection{Silhouette coefficient} \label{research:silhouette}
 The silhouette is used to measure between the cohesion and the separation of intra-clusters. In our model this measures the mean intra-cluster distance for each document and compares distance to the nearest-cluster distance.
+
 \[
    \mathlarger{s(i) = \frac{b(i) - a(i)}{\max{\{ a(i), b(i)}\} } }
 \]
+
 Where $s_i$ is the silhouette of sample $i$ in the cluster. $a_i$ is the average distance for $i$ from all the objects in the cluster and $b_i$ the distance of $i$ from a cluster $b$ not containing $i$. 
+
 \[
 \mathlarger{-1 \leq s \le 1}
 \]
@@ -72,16 +75,17 @@ Where $s_i$ is the silhouette of sample $i$ in the cluster. $a_i$ is the average
 The value of $s$ will be contained between $-1$ and $1$. If $s(i) = 1$ then we can say that the distance $i$  is a lot less in its own cluster then the nearest other cluster. If we take $s(i) = -1$ then the similarity of $i$ is higher in the other nearest cluster then its current cluster \cite{Rousseeuw1987Silhouettes:Analysis}.
 
 
-\subsection{Jensen-Shannon divergence and KL-Divergence}
-To evaluate the \cite{Shao2014TextCo-occurrence}
+\subsection{Jensen-Shannon divergence and KL-divergence} \label{research:jsdivergence}
+The Kullback Leiber divergence was introduced to measure the density between to distributions \cite{Hershey2007ApproximatingModels}. Based upon this important and popular measure the Jensen-Shannon divergence (JS) was introduced \cite{Fuglede2004Jensen-ShannonEmbedding}. Which is better used to measure similarity between two text documents based on their probability distributions.
 
-Silhouette coefficient
-is used to compare the distance in between clusters, distinction of the topic centers.
+\[
+\mathlarger{JDS(P||Q) = \frac{1}{2}D(P||M) + \frac{1}{2}D(Q||M)}
+\]
 
-KL-divergence
-is used to compare the similarity between documents and to cluster similar documents with each other based upon their probability.
+Where $P$ and $Q$ denote a probability distribution and $M$ the set of probability distributions. 
 
-\subsection{}
+\subsection{Human perception}
+Although LDA can be used to find latent patterns, explore, tag recommend in a document corpus the final result of topics do not necessarily match up with the human expectation of a topic. Especially in a unsupervised learning model with only mathematical measure. The reason of this paragraph is to make readers aware that the suitability of a model in a unsupervised learning and NLP environment still need support of a human factor \cite{Towne2016MeasuringPerception}.
 
 \section{Data mining}
 
