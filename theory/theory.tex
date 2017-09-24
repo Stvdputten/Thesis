@@ -1,14 +1,18 @@
 \chapter{Research Background}  \label{ch:theory}
 
-TODO Finish this chapter \ldots\ and the rest!
-
+Theory
 
 \section{definitions}
 
-\section{Related work}  
+This section contains the research background relevant to our current research. Latent Dirichlet Allocation (LDA) was introduced in 2003 by \cite{Blei2003LatentAllocation}. LDA is used for topic modeling on a corpera of documents. A lot of research has been performed in this area for different uses. The application of LDA ranges from image recognition to simple document topic discovery. 
+In the following sections these different applications will be discussed.
 
-This section contains the research background relevant to our current research. Research conducted in 
-Latent Dirichlet Allocation (LDA) was introduced in 2003 by \cite{Blei2003LatentAllocation}. LDA is used for topic modeling on a corpera of documents. A lot of research has been performed in this area for different uses. The application of LDA ranges from image recognition to simple document topic discovery. LDA  In the following sections these different applications will be discussed.
+\section{Related work} 
+Similair research to our research can 
+
+An interesting adaption of topic modelling can be found in twitter and cyber security. Twitter is a interesting field of research with real time tweets and a huge community. Due to the nature of twitter, analysing the huge stream of tweets can be a challenging and exhaustive task. A model with LDA has been introduced to analyse and detect topics, which could make it an interesting way to provide news feeds even quicker then traditional news sites \cite{Zhao2011ComparingModels}. Cyber security has also been an area which LDA seems applicable to. Through the usage of Big data and combination of LDA, users could be identified through system and network logs. Using the event logs to identify topics, new events of users could be identified as malicious or normal \cite{Jingwei2014KnowledgeLDA}. 
+
+
 
 \section{Buiding blocks}
 To even analyse and compute the system logs discussed in this research existing frameworks and libraries had to be used. Software is required to perform extracting, loading and transforming the data in a useable form.
@@ -41,9 +45,6 @@ In this section we discuss the various tools used. There a lot more tools, but t
     \end{enumerate}
     
 \end{enumerate}
-
-\section{Dataset}
-The dataset was provided by Capgemini containing vrops, metering and syslogs. Eventually syslogs were chose as suitable data set for analysis. 
 
 \section{Evaluation Measures}
 To evaluate our implementation we use different metrics. Evaluating an unsupervised learning model depends on the application and the goal the model is made with. In our case the metrics are here to evaluate the models capability to generalise, using perplexity. The clusters are evaluated based on their inner similarity between documents and \" distance \" compared to other cluster centroids, using Silhouette co\"efficient. The distance metric used for silhouette co\"efficient is based on the KL-divergence metric. Human perception is also an important factor to evaluate the models, which isn't used in this research but we will discussion shortly.
@@ -82,13 +83,10 @@ The Kullback Leiber divergence was introduced to measure the density between to 
 \mathlarger{JDS(P||Q) = \frac{1}{2}D(P||M) + \frac{1}{2}D(Q||M)}
 \]
 
-Where $P$ and $Q$ denote a probability distribution and $M$ the set of probability distributions. 
+Where $P$ and $Q$ denote a probability distribution and $M$ the set of probability distributions. The useful if especially to find the distincttiveness and cohesion betwoon topics
 
 \subsection{Human perception}
-Although LDA can be used to find latent patterns, explore, tag recommend in a document corpus the final result of topics do not necessarily match up with the human expectation of a topic. Especially in a unsupervised learning model with only mathematical measure. The reason of this paragraph is to make readers aware that the suitability of a model in a unsupervised learning and NLP environment still need support of a human factor \cite{Towne2016MeasuringPerception}.
-
-\section{Data mining}
-
+Although LDA can be used to find latent patterns, explore, tag recommend in a document corpus the final result of topics do not necessarily match up with the human expectation of a topic. Especially in a unsupervised learning model with only mathematical measures\cite{Towne2016MeasuringPerception}. The reason of this paragraph is to make readers aware that the suitability of a model in a unsupervised learning and NLP environment still need support of a human factor. Research from Chang  et al. \cite{Chang2009ReadingModels} and Blei et al. \cite{Chaney2012VisualizingModels.} provide more indepth research in this topic.
 
 \section{Machine learning}
-
+In the field of computer science, machine learning is used to learn computers to classify or predict without explicitly being told to. Learning can be done supervised, unsupervised and semi-supervised. Supervised learning makes use of labeled data, which makes it easy to train and evaluate the model. Unsupervised learning makes use of unlabeled data by recognizing patterns in the data. Semi-supervised learns using both unlabaled and labeled data.

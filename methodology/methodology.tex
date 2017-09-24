@@ -1,5 +1,7 @@
 \chapter{Methodology}  \label{ch:methodology}
 
+Why did I choose my method
+
 \begin{table}[h]
 \centering
  \begin{tabular}{l l} 
@@ -37,7 +39,7 @@ The machine learning and text mining area have focused a lot on probabilistic to
 
 
 \section{Latent dirichlet allocation}\label{lda:lda}
-In natural language processing, \textit{Latent dirichlet allocation} (LDA) is an unsupervised machine learning technique introduced in 2003 for Topic modelling \cite{Blei2003LatentAllocation}. The notation used for LDA can be seen in Table \ref{tab:table1}. 
+In natural language processing, \textit{Latent dirichlet allocation} (LDA) is an unsupervised machine learning technique introduced in 2003 for Topic modelling \cite{Blei2003LatentAllocation}. The notation used for LDA can be seen in Table \ref{tab:table1}. LDA is part of a larger field called probabilistic topic modelling \cite{Blei2010}.
 
 LDA makes use of a generative probabilistic model of a collection of documents \textbf{M} (corpus) to discover latent topics. Fig \ref{fig:LDA} represents the plate notation of LDA. For a more understandable model consider Fig \ref{fig:LDA_example}. The model assumes that each document \textbf{N} in the corpus consists of a mixture of latent topics. These topics are a mixture of words \textbf{W} assigned to a topic from a fixed vocabulary \textbf{V}. \textbf{Z} notates the assignment of specific words to topics. The distribution of words $\theta$ for each topic is dependent on the sensitivity of $\alpha$. The probability distribution of topics in documents $\varphi$ are depended on the sensitivity of $\beta$. The number of topics \textbf{K} are predefined by the user. 
 
@@ -74,8 +76,44 @@ In the same way $\varphi$ is the weight of words in a topic. $\varphi$ in this c
 
 
 
-\section{Online Latent dirichlet allocation} \label{lda:onlinelda}
+\subsection{Online Latent dirichlet allocation} \label{lda:onlinelda}
 The online variant of LDA was introduced  by Hoffman et al. in 2010.\cite{Hoffman2010OnlineAllocation} This new variation dealt with the problem earlier LDA models struggled with. The problem that LDA had was the computing of huge collections of documents. The online LDA can be used for massive and streaming documents without losing performance compared to the original LDA model, because it analyses the documents in batches instead of single observations with stochastic (random) optimisation.\cite{Beaver2012StochasticInference} 
 
-\section{Dimensionality reduction}
+\subsection{Dimensionality reduction}
 LDA is widely applied for text clustering, because LDA actually reduces the dimension. Reducing the dimension with LDA then use Jensen-Shannon distance  to measure text similarity, which we discuss in chapter \ref{research:jsdivergence}. The input is usually a bag of words matrix that can be transformed to a document topic matrix. After this models like K-means can be used to cluster similar documents with each other. 
+
+\section{Text preprocessing}
+In this section we\'ll talk about the input dataset, the reason why we selected it and how it got processed for our model. Preprocessing involves tokenization and stop word removal discussed in section \ref{tokenization} - \ref{bagow}. Preprocessing is important and if done wrong can impact the final results. It\' s common knowledge that giving a model bad input brings bad output.
+
+\subsection{Dataset}
+The dataset was provided by Capgemini containing syslogs. The syslogs contains event logs from different servers provided to their customers and internal staff. The event logs used on their servers were extracted from different operating systems, ranging from the year 2015 to current day. Due to the size and complexity of the dataset, this research contains 1 day of data selected by the word error. The dataset will be refered as the corpus and the system logs as documents throughout this research. The corpus contains around 400000 records and has messages consisting of twitter like sizes. 
+The documents has a few attributes, hostname, severity, port, priority, valid, protocol, body. The attribute contain little information and will not be used, only the body has been extracted which contains the event log.
+
+\subsection{Tokenization}\label{tokenization}
+In the preprocessing phase, the document needs to be transformed from a raw text to a usable vector. The nature of the documents make it possible for the same kind of messages to be represented in different ways. The goal is to extract only the usable textual data.
+
+The content of the document consisted of the message and specific user and server information. An algorithm had to be written to remove the unnecessary information from the dataset. This filtered the message from the specific server data and removed the specific users information from the message.  To our research only the message remains relevant.
+
+\subsection{Stop word}\label{stop_words}
+LDA assumes that each word is equally important, which we can simply deduce to not be true from a logical and linguistic point of few. Words such as \' the\' and \' a\\an\' are not important, likely short words and other general English words can be removed to only keep the most distinguishable words left. The provided tools in sklearn provide a standard tokenization option with stop words from the English vocabulary.
+
+\subsection{Bag of words} \label{bagow}
+The text preprocessing in this research makes usage of the bag-of-words representation as is common for topic modelling. Bag of word counts the words that appeared in the document and represent the words in a document as as a term frequency matrix. The bag of words representation of a document doesn\' t take in the order or semantic structure in a document, but LDA discovers these semantic structures itself. 
+
+\section{Syslog} 
+Syslogs are textual messages \cite{Stearley2004TowardsSyslogs} which contain the messages provided by the systems.
+
+
+\section{Challenges}
+
+\subsection{Natural Language Processing}
+
+
+\subsection{Semantics}
+
+
+\subsection{Sentiment analysis}
+
+
+\subsection{Extract, Transform, Load}
+
