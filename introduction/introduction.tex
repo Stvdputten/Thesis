@@ -6,20 +6,50 @@ During the time spent on this research challenges were met and identified for re
  
  
 \section{Motivation}
-
+System logs are a primary source for the detection of problems in large computer systems, like data warehouses. While domain experts can be used to detect and fix the problems detected, this can be hard and time consuming. Machine learning techniques like topic modelling make it possible to develop models to extract these latent patterns from these syslogs. While topic modelling is normally used in for large text corpera, recent research in the field of short text clustering and twitter tweets clustering might be in a similar enough to work on system logs. An interesting application which has not yet been touched a lot through unsupervised machine learning techniques.
 
 \section{Objectives}
 
 
 \section{Research question}
+Can we use topic modelling to find error messages?
+
+Can we use LDA to cluster error messages with similar error messages?
+
+Why is LDA the most suitable for this type of problem?
+
+What other methods are available to solve this error clustering?
+
+
+
+
+
 How do we define similair messages?
 
 Can we cluster these error messages to find patterns?
 
+Wat ik zou verwachten in je scriptie zijn de volgende topics
+•	Wat is het probleem (de probleemstelling)?
+•	Welke mogelijkheden zijn er om dit probleem op te lossen?
+•	Welke methode heb je gekozen, en vooral uitleggen waarom deze methode volgens jou de beste is?
+•	Hoe heb je vastgesteld dat de gekozen oplossing de beste is?
+•	Wat is de uitkomst?
+•	Wat zijn de voor en nadelen van het gekozen model, wat zijn de beperkingen, wat is de optimale modelering en waarom?
+Zijn deze onderwerpen voldoende afgedicht in onderstaande structuur?
+
+Ik ben veel meer geïnteresseerd in de onderbouwing:
+•	Wat is de (onze) probleem omschrijving
+Finding structures in syslogs to cluster undiscovered syslogs with errors
+•	Waarom kies je LDA om dit probleem te lijf te gaan
+o	Pro’s / con’s
+o	Alternatieven
+•	Hoe moet LDA gebruikt worden
+o	Welke specifieke tuning heb je gebruikt
+o	Hoe beinvloed de aanpassingen van parameters de uitkomst
+
 
 \textbf{Can we make a reliable model for error detection in system logs?}
 
-\section{Eva}
  
 \section{Thesis Overview}
 It is recommended to end the introduction with an overview of the thesis. This chapter contains the introduction; Chapter~\ref{ch:definitions} includes the definitions; Chapter~\ref{ch:relatedwork} discusses related work; Chapter~\ref{ch:evaluation} evaluates the contributions; Chapter~\ref{ch:conclusions} concludes.
