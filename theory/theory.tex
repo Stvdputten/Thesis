@@ -1,34 +1,35 @@
 \chapter{Research Background}  \label{ch:theory}
 
-Theory
-
+\begin{comment}
 \section{definitions}
+\end{comment}
 
-This section contains the research background relevant to our current research. Latent Dirichlet Allocation (LDA) was introduced in 2003 by \cite{Blei2003LatentAllocation}. LDA is used for topic modeling on a corpera of documents. A lot of research has been performed in this area for different uses. The application of LDA ranges from image recognition to simple document topic discovery. 
-In the following sections these different applications will be discussed.
+The first part of this section discusses previous work related to this research. Secondly we will shortly review the tools available and the for what purpose the are used. The last section explains in what field this research is related.
+
+??Latent Dirichlet Allocation is used for topic modelling on a corpera of documents. A lot of research has been performed in this area for different applications. The application of LDA ranges from image recognition to simple document topic discovery. 
+In the following sections we will look at different applications, similar works and also explain the building blocks of this research.
 
 \section{Related work} 
-Similair research to our research can 
+An interesting adaptation of topic modelling can be found in twitter and cyber security. Twitter is a interesting field of research with real time tweets and a huge community. Due to the nature of twitter, analysing the huge stream of tweets can be a challenging and exhaustive task. A model with LDA has been introduced to analyse and detect topics. This model is an interesting way to provide news feeds even quicker then traditional news sites \cite{Zhao2011ComparingModels}. Cyber security has also been an area which LDA seems applicable to. Through the usage of Big data and combination of LDA, users could be identified through system and network logs. Using the event logs to identify topics, new events of users could be identified as malicious or normal \cite{Jingwei2014KnowledgeLDA}. 
 
-An interesting adaption of topic modelling can be found in twitter and cyber security. Twitter is a interesting field of research with real time tweets and a huge community. Due to the nature of twitter, analysing the huge stream of tweets can be a challenging and exhaustive task. A model with LDA has been introduced to analyse and detect topics, which could make it an interesting way to provide news feeds even quicker then traditional news sites \cite{Zhao2011ComparingModels}. Cyber security has also been an area which LDA seems applicable to. Through the usage of Big data and combination of LDA, users could be identified through system and network logs. Using the event logs to identify topics, new events of users could be identified as malicious or normal \cite{Jingwei2014KnowledgeLDA}. 
+To do: similar work 
 
 
 
 \section{Buiding blocks}
-To even analyse and compute the system logs discussed in this research existing frameworks and libraries had to be used. Software is required to perform extracting, loading and transforming the data in a useable form.
+This section has an oversight of the main tools and packages used. This section might be mentioned or referenced in later parts of this paper. The packages were required for the extraction, loading and transforming the data in an usable form.
 
-\subsection{Software}
-In this section we discuss the various tools used. There a lot more tools, but these tools are chosen mainly because they are open source and relative easy to use.
+\subsection{Packages and libraries}
 
 \begin{enumerate}
     \item \textbf{Hadoop} $($\url{http://hadoop.apache.org/}$)$ \\
     The Apache Hadoop software library is a framework that allows for the distributed processing of large data sets across clusters of computers using simple programming models. 
     \begin{enumerate}
-        \item \textbf{Apache Spark} $($\url{https://spark.apache.org/}$)$\\
-        Apache Spark is a fast and general engine for large-scale data processing. Spark lets users compute in multiple languages.
         \item \textbf{HDFS} $($\url{http://hadoop.apache.org/}$)$ \\
-         A distributed file system that provides high-throughput access to application data.
-         \item \textbf{Apache Zeppelin} $($\url{https://zeppelin.apache.org/}$)$ \\
+        A distributed file system that provides high-throughput access to application data. Used to store big data.
+        \item \textbf{Apache Spark} $($\url{https://spark.apache.org/}$)$\\
+        Apache Spark is a fast and general engine for large-scale data processing.
+        \item \textbf{Apache Zeppelin} $($\url{https://zeppelin.apache.org/}$)$ \\
          Web-based notebook that enables data-driven, interactive data analytics and collaborative documents with SQL, Scala and more.
     \end{enumerate}
     
@@ -41,12 +42,29 @@ In this section we discuss the various tools used. There a lot more tools, but t
         Numpy is a scientific package with Python for powerful array objects, functions and lots of mathematical capabilities.
         \item \textbf{Matplotlib} $($\url{http://matplotlib.org/}$)$ \\
         Matplotlib is a 2D Python plotting library very similar to MATLAB.
-        
+        \item \textbf{Seaborn} $($\url{https://seaborn.pydata.org/}$)$ \\
+        Seaborn is a Python visualization library based on matplotlib. It provides a high-level interface for drawing attractive statistical graphics.
+        \item \textbf{pyLDAvis} $($\url{https://www.python.org/}$)$\\
+        The pyLDAvis package is designed to help users interpret the topics in a topic model that has been fit to a corpus of text data. The package extracts information from a fitted LDA topic model to inform an interactive web-based visualization and can be used in combination with sklearn.
     \end{enumerate}
+    
+    \item \textbf{Conda} $($\url{https://www.anaconda.com/}$)$ \\
+    Conda is an open source package and environment management for Python. Conda allows easy setup with out-of-the-box environments for quick testing and removal of environments.
+    \begin{enumerate}
+        \item \textbf{Jupyter Notebook} $($\url{https://jupyter.org/}$)$ \\
+        Jupyter notebook is included in the standard data science conda package. A fast web application used to create documents in Python code to easily share code and visualise data.
+        \item \textbf{Python 2.7.X} $($\url{https://www.python.org/}$)$\\
+        An user-friendly and elegant programming language which has a great scientific community, making Python the go to language for data science.
+    \end{enumerate}
+    
+    
+    
     
 \end{enumerate}
 
 \section{Machine learning}
+A general explanation to allow
+Machine learning can be divided in supervised, unsupervised and reinforcement learning
 In the field of computer science, machine learning is used to learn computers to classify or predict without explicitly being told to. Learning can be done supervised, unsupervised and semi-supervised. Supervised learning makes use of labeled data, which makes it easy to train and evaluate the model. Unsupervised learning makes use of unlabeled data by recognizing patterns in the data. Semi-supervised learns using both unlabelled and labelled data.
 
 \subsection{Hard and Soft clustering}

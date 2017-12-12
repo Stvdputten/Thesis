@@ -1,28 +1,34 @@
 \chapter{Introduction} \label{ch:introduction}
+\begin{comment}
 The intention of this research started with analysing the system logs to help create a model for predicting hardware and software failure for maintenance and automatic self-healing. The huge amount of system logs available from a variety of systems brought the question how to analyse and make use of the logs to predict hardware and software failure.
 
 Current research of big data makes this a suitable problem to solve through recent machine learning techniques. 
 During the time spent on this research challenges were met and identified for realising this goal and ended with the usage of Natural Language Processing (NLP) and unsupervised learning.  The untapped amount of raw data makes it possible for many more application, but in further paragraphs it will be made clear why NLP was chosen and what more could be applied on this Big data problem.
+ \end{comment}
  
- 
-\section{Motivation}
-System logs are a primary source for the detection of problems in large computer systems, like data warehouses. While domain experts can be used to detect and fix the problems detected, this can be hard and time consuming. Machine learning techniques like topic modelling make it possible to develop models to extract these latent patterns from these syslogs. While topic modelling is normally used in for large text corpera, recent research in the field of short text clustering and twitter tweets clustering might be in a similar enough to work on system logs. An interesting application which has not yet been touched a lot through unsupervised machine learning techniques.
+\section{Motivation/probleemstelling}
+System logs are a primary source for the detection of problems in large computer systems, like data warehouses. While domain experts can be used to detect and fix the problems detected, this can be difficult and time consuming. Machine learning techniques like topic modelling make it possible to develop models to extract these latent patterns from these system logs. While topic modelling is normally used in for large text corpera, recent research in the field of short text clustering and twitter tweets clustering are similar enough to by applicable for system logs. An interesting application which has not yet been touched a lot through unsupervised machine learning techniques.
 
 \section{Objectives}
 
 
 \section{Research question}
-Can we use topic modelling to find error messages?
+Can we use topic modelling to classify and cluster error messages?
 
-Can we use LDA to cluster error messages with similar error messages?
+What are the optimal parameters?
 
-Why is LDA the most suitable for this type of problem?
+subquestions:
+Why is LDA suitable for this type of data 
+
+How do the parameters influence the models performance?
+
+What are the pro's and con's of using LDA?
 
 What other methods are available to solve this error clustering?
 
 
 
-
+\begin{comment}
 
 How do we define similair messages?
 
@@ -50,9 +56,13 @@ o	Hoe beinvloed de aanpassingen van parameters de uitkomst
 
 \textbf{Can we make a reliable model for error detection in system logs?}
 
+ \end{comment}
  
 \section{Thesis Overview}
+
+\begin{comment}
 It is recommended to end the introduction with an overview of the thesis. This chapter contains the introduction; Chapter~\ref{ch:definitions} includes the definitions; Chapter~\ref{ch:relatedwork} discusses related work; Chapter~\ref{ch:evaluation} evaluates the contributions; Chapter~\ref{ch:conclusions} concludes.
 
 Also make a nice sentence with ``bachelor thesis'', LIACS and the names of the supervisors.
 
+\end{comment}
