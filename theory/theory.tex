@@ -7,22 +7,24 @@
 In this chapter, related work will be described. In section \ref{theory:relatedwork}, research conducted on twitter tweets and cyber security are reviewed. In section \ref{theory:featureextraction}, research that has been conducted on extracting and transforming logs to features are described. Section \ref{theory:machinelearning} introduces the previous applications of topic modelling on system logs. The last section \ref{theory:buildingblocks} introduces the tools and frameworks applied during this research.
 
 \section{Topic modelling in general} \label{theory:relatedwork}
-In this section, we briefly describe two researches that applied topic modelling. The descriptions will end with an overview explaining which parts are relevant to our current research. \par
+In this section, we briefly describe and show two researches that applied topic modelling for different use cases. The descriptions will end with an overview explaining which parts are relevant to our current research. \par
 
-\setlength{\parindent}{3ex} A research conducted in 2011 makes use of the numerous amounts of tweets on Twitter. Twitter is an online platform used to message about social media and news. Users make posts called \" tweets\" that are restricted to 140 characters. The authors are interested in finding news topics from twitter feeds and comparing the topics with traditional news feeds using LDA.
+\setlength{\parindent}{3ex} A research conducted in 2011 makes use of the numerous amounts of tweets on Twitter. Twitter is an online platform used to message about social media and news. Users make posts called tweets that are restricted to 140 characters. The authors are interested in finding news topics from twitter feeds and comparing the topics with traditional news feeds using LDA.
 
-The data is prepared using 3 months worth of tweets and news feed data from New York Times. The tweets are filtered on stop words and tweets appearing more than 70\% of the time and less than 10 times are removed. Following the 
+The authors start with preparing 3 months worth of tweets of users and news feed data from New York Times. The tweets are filtered on stop words and tweets appearing more than 70\% of the time and less than 10 times are removed. The authors recognise that LDA does not perform very well on small tweets. To better fit the data to LDA, the authors aggregate the tweets of each user to a single document. The data is represented in a Bag of Words matrix and fitted to their custom Twitter-LDA model. The authors continue comparing the traditional LDA model and their own model using two human judges. The judges compare the generated topics, which are 10 words long and a mixture of words, using a scoring mechanism. The scored is based on each topics distinction and cohesion of words. The final results show that their Twitter-LDA model is better compared to the traditional LDA model. The results of their model showed more informative topics, which could  not be extracted from the traditional news source. \cite{Zhao2011ComparingModels}
 
-The authors use LDA for their topic distillation, however the data presents a problem. LDA does not perform very well on small tweets. The authors introduce a Twitter-LDA model, 
+The second research is published in 2014 with the intention of exploring a Big data use case. The National Center of Supercomputing Applications (NCSA) generates around 4.5 GB of data each day. The data are collected from security monitoring and system logs. The authors study a new approach of LDA on logs files for intrusion detection. The authors propose that LDA can be used to detect patterns in log events. The model is trained to recognise normal activities and abnormal behaviour patterns, described in the probability distribution of the topics over a data set. The model is also capable of detecting the semantics of the log events, which provide a higher level description of the intention of an user. \cite{Jingwei2014KnowledgeLDA}. 
 
-
-By comparing a traditional news source with
-Topic modelling is a very popular and high researched field. While topic modelling  
-An interesting adaptation of topic modelling can be found in twitter and cyber security. Twitter is a interesting field of research with real time tweets and a huge community. Due to the nature of twitter, analysing the huge stream of tweets can be a challenging and exhaustive task. A model with LDA has been introduced to analyse and detect topics. This model is an interesting way to provide news feeds even quicker then traditional news sites \cite{Zhao2011ComparingModels}. Cyber security has also been an area which LDA seems applicable to. Through the usage of Big data and combination of LDA, users could be identified through system and network logs. Using the event logs to identify topics, new events of users could be identified as malicious or normal \cite{Jingwei2014KnowledgeLDA}. 
-
-To do: similar work 
+In our research we will apply ideas mentioned in both researches. Our dataset extracted is similarly structured to tweets, which are short and domain specific. The domain specific nature of our research is also explored in the second research paper. The second research propose an approach for using log files to detect intrusion, which is similar to our problem of detecting errors. The evaluation in both researches is based on human judgements and semantic pattern recognition, which both depend on the distinct nature of the topics. In other words, if the topics in the model can detected pattern it will have distinct topics.
 
 \section{Feature extraction from Logs} \label{theory:featureextraction}
+
+
+\setlength{\parindent}{3ex} By comparing a traditional news source with
+Topic modelling is a very popular and high researched field. While topic modelling  
+An interesting adaptation of topic modelling can be found in twitter and cyber security. Twitter is a interesting field of research with real time tweets and a huge community. Due to the nature of twitter, analysing the huge stream of tweets can be a challenging and exhaustive task. A model with LDA has been introduced to analyse and detect topics. This model is an interesting way to provide news feeds even quicker then traditional news sites . Cyber security has also been an area which LDA seems applicable to. Through the usage of Big data and combination of LDA, users could be identified through system and network logs. Using the event logs to identify topics, new events of users could be identified as malicious or normal 
+
+
 Logs are created in different kind of types, e.g. server logs, event logs and a lot more. The servers logs in the data set are streamed using Apache NiFi. Logs can be numerical data, but also contain non-numerical data. The messages confined in logs are textual and as such can be analysed through Natural Language Processing.
 The data that logs can include can be numerical data and non-numerical data
 
