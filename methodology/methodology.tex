@@ -94,6 +94,22 @@ In this section we'll talk about the input dataset, the reason why we selected i
 The dataset used in this research is provided by Capgemini containing syslogs from various servers. The syslogs contains event logs from different servers provided to their customers and internal staff. The event logs used on their servers were extracted from different operating systems, ranging from the year 2015 to current day. The size of one day of data can easily range into the 20 - 40 million event logs. Due to the size and complexity and computation time of the dataset, this research contains 1 day of data with the word error to ensure it's associaten with erorrs.
 The data will be referred as the corpus and the system logs as documents throughout this research. The corpus contains 426928 records and has messages consisting of small twitter like sizes. The documents has a few features like hostname, severity, port, priority, valid, protocol, body. The features contain little information and will not be used, only the body feature has been extracted which contains the event log.
 
+
+\begin{table}[h]
+\centering
+ \begin{tabular}{|l|l|l|l|} 
+ \hline
+ Collection & Documents & Words & Vocabulary  \\ [0.5ex] 
+ \hline\hline
+ Complete dataset & 2700000 & 310 million & N.A.  \\ 
+ Error dataset & 426905 & 3428621 & 1694 \\
+ \hline
+ \end{tabular}
+\caption{Statistics about the dataset}
+\label{tab:table1}
+\end{table}
+
+
 \subsection{Tokenization}\label{tokenization}
 The first step for our preprocessing is the cleaning up of the documents. 
 In the preprocessing phase the document needs to be cleaned up and normalised to ensure consistency in the input data.

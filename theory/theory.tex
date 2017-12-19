@@ -4,19 +4,42 @@
 \section{definitions}
 \end{comment}
 
-In this chapter, related work will be described. In section \ref{theory:relatedwork}, research conducted on twitter tweets and cyber security are reviewed. In section \ref{theory:featureextraction}, research that has been conducted on extracting and transforming logs to feature. Section \ref{theory:machinelearning} introduces the previous applications of topic modelling on system logs.
-The last section \ref{theory:buildingblocks} introduces the tools and frameworks applied for this study.
+In this chapter, related work will be described. In section \ref{theory:relatedwork}, research conducted on twitter tweets and cyber security are reviewed. In section \ref{theory:featureextraction}, research that has been conducted on extracting and transforming logs to features are described. Section \ref{theory:machinelearning} introduces the previous applications of topic modelling on system logs. The last section \ref{theory:buildingblocks} introduces the tools and frameworks applied during this research.
 
-??Latent Dirichlet Allocation is used for topic modelling on a corpera of documents. A lot of research has been performed in this area for different applications. The application of LDA ranges from image recognition to simple document topic discovery. 
-In the following sections we will look at different applications, similar works and also explain the building blocks of this research.
+\section{Topic modelling in general} \label{theory:relatedwork}
+In this section, we briefly describe two researches that applied topic modelling. The descriptions will end with an overview explaining which parts are relevant to our current research. \par
 
-\section{Related work} \label{theory:relatedwork}
+\setlength{\parindent}{3ex} A research conducted in 2011 makes use of the numerous amounts of tweets on Twitter. Twitter is an online platform used to message about social media and news. Users make posts called \" tweets\" that are restricted to 140 characters. The authors are interested in finding news topics from twitter feeds and comparing the topics with traditional news feeds using LDA.
+
+The data is prepared using 3 months worth of tweets and news feed data from New York Times. The tweets are filtered on stop words and tweets appearing more than 70\% of the time and less than 10 times are removed. Following the 
+
+The authors use LDA for their topic distillation, however the data presents a problem. LDA does not perform very well on small tweets. The authors introduce a Twitter-LDA model, 
+
+
+By comparing a traditional news source with
+Topic modelling is a very popular and high researched field. While topic modelling  
 An interesting adaptation of topic modelling can be found in twitter and cyber security. Twitter is a interesting field of research with real time tweets and a huge community. Due to the nature of twitter, analysing the huge stream of tweets can be a challenging and exhaustive task. A model with LDA has been introduced to analyse and detect topics. This model is an interesting way to provide news feeds even quicker then traditional news sites \cite{Zhao2011ComparingModels}. Cyber security has also been an area which LDA seems applicable to. Through the usage of Big data and combination of LDA, users could be identified through system and network logs. Using the event logs to identify topics, new events of users could be identified as malicious or normal \cite{Jingwei2014KnowledgeLDA}. 
 
 To do: similar work 
 
-\section{Feature extraction from logs} \label{theory:featureextraction}
+\section{Feature extraction from Logs} \label{theory:featureextraction}
+Logs are created in different kind of types, e.g. server logs, event logs and a lot more. The servers logs in the data set are streamed using Apache NiFi. Logs can be numerical data, but also contain non-numerical data. The messages confined in logs are textual and as such can be analysed through Natural Language Processing.
+The data that logs can include can be numerical data and non-numerical data
 
+
+
+\section{Machine learning} \label{theory:machinelearning}
+In the field of computer science, machine learning is used to learn computers to classify or predict without explicitly being programmed to do so. Generally machine learning can be divided in supervised, unsupervised and reinforcement learning. The dataset that has been acquired 
+The main goal of this paper a form of unsupervised machine learning.
+Learning can be done supervised, unsupervised and semi-supervised. Supervised learning makes use of labeled data, which makes it easy to train and evaluate the model. Unsupervised learning makes use of unlabeled data by recognizing patterns in the data. Semi-supervised learns using both unlabelled and labelled data.
+ 
+
+\subsection{Clustering Techniques}
+
+\subsection{Hard and Soft clustering}
+While hard and soft clustering are both a form of clustering, this researches contains both forms. The results discussed in chapter \ref{ch:result} contains results based both upon hard and soft clustering. Clustering data can be achieved by giving every element of the data at most 1 label, this is called hard clustering. Soft clustering allows data to be part of multiple clusters or contain multiple labels. Especially when talking about topic modelling, every document is a mixture of multiple topics this by itself is already a form of soft clustering. To avoid confusion what this research means with clustering, this section was added.
+
+\subsection{Evaluation Techniques}
 
 \section{Buiding blocks} \label{theory:buildingblocks}
 This section has an oversight of the main tools and packages used. This section might be mentioned or referenced in later parts of this paper. The packages were required for the extraction, loading and transforming the data in an usable form.
@@ -59,15 +82,4 @@ This section has an oversight of the main tools and packages used. This section 
         An user-friendly and elegant programming language which has a great scientific community, making Python the go to language for data science.
     \end{enumerate}
     
-    
-    
-    
 \end{enumerate}
-
-\section{Machine learning} \label{theory:machinelearning}
-In the field of computer science, machine learning is used to learn computers to classify or predict without explicitly being programmed to do so. Generally machine learning can be divided in supervised, unsupervised and reinforcement learning. The dataset that has been acquired 
-The main goal of this paper a form of unsupervised machine learning.
- Learning can be done supervised, unsupervised and semi-supervised. Supervised learning makes use of labeled data, which makes it easy to train and evaluate the model. Unsupervised learning makes use of unlabeled data by recognizing patterns in the data. Semi-supervised learns using both unlabelled and labelled data.
-
-\subsection{Hard and Soft clustering}
-While hard and soft clustering are both a form of clustering, this researches contains both forms. The results discussed in chapter \ref{ch:result} contains results based both upon hard and soft clustering. Clustering data can be achieved by giving every element of the data at most 1 label, this is called hard clustering. Soft clustering allows data to be part of multiple clusters or contain multiple labels. Especially when talking about topic modelling, every document is a mixture of multiple topics this by itself is already a form of soft clustering. To avoid confusion what this research means with clustering, this section was added.
