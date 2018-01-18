@@ -17,12 +17,16 @@ The second research is published in 2014 with the intention of exploring a Big d
 
 In our research we will apply ideas mentioned in both researches. Our dataset extracted is similarly structured to tweets, which are short and domain specific. The domain specific nature of our research is also explored in the second research paper. The second research propose an approach for using log files to detect intrusion, which is similar to our problem of detecting errors. The evaluation in both researches is based on human judgements and semantic pattern recognition, which both depend on the distinct nature of the topics. In other words, if the topics in the model can detected pattern it will have distinct topics.
 
-\section{Feature extraction from Logs} \label{theory:featureextraction}
+\section{Feature extraction from Logs}\label{theory:featureextraction}
+!!!!
 Numerous log files are outputted by different servers, e.g. web server logs, system logs, etc. A log includes data that can be numerical or non-numerical data, depending on the format and source of the log. The content of each log can be used for feature extraction. Using text mining to extract the textual content from each log is suffice to be able to use the logs for our research.
 
+\begin{comment}
 \setlength{\parindent}{3ex}  When we view the 
 
 \cite{Xu2009DetectingLogs}
+
+\end{comment}
 
 By comparing a traditional news source with
 Topic modelling is a very popular and high researched field. While topic modelling  
@@ -38,14 +42,9 @@ The data that logs can include can be numerical data and non-numerical data
 In the field of computer science, machine learning is used to learn computers to classify or predict without explicitly being programmed to do so. Generally machine learning can be divided in supervised, unsupervised and reinforcement learning. The dataset that has been acquired 
 The main goal of this paper a form of unsupervised machine learning.
 Learning can be done supervised, unsupervised and semi-supervised. Supervised learning makes use of labeled data, which makes it easy to train and evaluate the model. Unsupervised learning makes use of unlabeled data by recognizing patterns in the data. Semi-supervised learns using both unlabelled and labelled data.
- 
-
-\subsection{Clustering Techniques}
 
 \subsection{Hard and Soft clustering}
-While hard and soft clustering are both a form of clustering, this researches contains both forms. The results discussed in chapter \ref{ch:result} contains results based both upon hard and soft clustering. Clustering data can be achieved by giving every element of the data at most 1 label, this is called hard clustering. Soft clustering allows data to be part of multiple clusters or contain multiple labels. Especially when talking about topic modelling, every document is a mixture of multiple topics this by itself is already a form of soft clustering. To avoid confusion what this research means with clustering, this section was added.
-
-\subsection{Evaluation Techniques}
+Machine learning divides cluster into two types, hard and soft. Hard and soft clustering are both a form of clustering, this researches contains both forms. The results discussed in chapter \ref{ch:result} contains results based both upon hard and soft clustering. Clustering data can be achieved by giving every element of the data at most 1 label, this is called hard clustering. Soft clustering allows data to be part of multiple clusters or contain multiple labels. Especially when talking about topic modelling, every document is a mixture of multiple topics this by itself is already a form of soft clustering. To avoid confusion what this research means with clustering, this section was added.
 
 \section{Buiding blocks} \label{theory:buildingblocks}
 This section has an oversight of the main tools and packages used. This section might be mentioned or referenced in later parts of this paper. The packages were required for the extraction, loading and transforming the data in an usable form.

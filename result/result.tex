@@ -1,14 +1,15 @@
 \chapter{Results}
 \label{ch:result}
 
-In this chapter we will discuss the results retrieved after applying our LDA implementation.
+In this chapter we will discuss the results retrieved after applying our LDA implementation. Section \ref{results:evaluation measures} defines the 4 different evaluation measures. In section \ref{results:modelresults} our results will be shown. Furthermore section \ref{results:parameter tuning} present the tuning results.
 
-\section{Model results}
+\section{Model results}\label{results:modelresults}
+
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=15cm, height=8cm]{figures/wc.png}
-    %\caption{The smoothed LDA plate notation}
+    \caption{A wordcloud containing terms found in clusters}
     \label{fig:worldcloud}
 \end{figure}
 
@@ -18,8 +19,8 @@ The model used is ofcourse LDA.
 
 \end{comment}
 
-\section{Evaluation Measures}
-To evaluate our implementation we use different metrics. Evaluating an unsupervised learning model depends on the application and the goal the model is made with. In our case the metrics are here to evaluate the models capability to generalise, using perplexity. The clusters are evaluated based on their inner similarity between documents and \" distance \" compared to other cluster centroids, using Silhouette co\"efficient. The distance metric used for silhouette co\"efficient is based on the KL-divergence metric. Human perception is also an important factor to evaluate the models, which isn't used in this research but we will discussion shortly.
+\section{Evaluation Measures}\label{results:evaluation measures}
+To evaluate our implementation we use different metrics. Evaluating an unsupervised learning model depends on the application and the goal the model is made with. In our case the metrics are here to evaluate the models capability to generalise, using perplexity. The clusters are evaluated based on their inner similarity between documents and \" distance \" compared to other cluster centroids, using Silhouette co\"efficient. The distance metric used for silhouette co\"efficient is based on the KL-divergence metric. The last measurement we use is coherence in topics and the measurement of distance between topic document clusters using the visual tool LDAvis.
 
 \subsection{Perplexity}\label{research:perplexity}
 In the original paper Blei introduces a general model evaluation metric \cite{Blei2003} to compare topic models. Perplexity can be used to compare the generalisation of a model on new unlabelled data.
@@ -57,10 +58,12 @@ The Kullback Leiber divergence was introduced to measure the density between to 
 
 Where $P$ and $Q$ denote a probability distribution and $M$ the set of probability distributions. The useful if especially to find the distinctiveness and cohesion between topics
 
-\subsection{Human perception}
-Although LDA can be used to find latent patterns, explore, tag recommend in a document corpus the final result of topics do not necessarily match up with the human expectation of a topic. Especially in a unsupervised learning model with only mathematical measures\cite{Towne2016MeasuringPerception}. The reason of this paragraph is to make readers aware that the suitability of a model in a unsupervised learning and NLP environment still need support of a human factor. Research from Chang  et al. \cite{Chang2009ReadingModels} and Blei et al. \cite{Chaney2012VisualizingModels.} provide more indepth research in this topic.
+\subsection{Human perception}\label{results:humanperception}
+Although LDA can be used to find latent patterns, explore, tag recommend in a document corpus the final result of topics do not necessarily match up with the human expectation of a topic. Especially in a unsupervised learning model with only mathematical measures\cite{Towne2016MeasuringPerception}. The reason of this paragraph is to make readers aware that the suitability of a model in a unsupervised learning and NLP environment still need support of a human factor. Research from Chang  et al. \cite{Chang2009ReadingModels} and Blei et al. \cite{Chaney2012VisualizingModels.} provide more in depth research in this topic.  
 
-\subsection{parameter tuning}
+With that in mind, the highly dimensional LDA is actually suitable in contrast to most machine learning techniques to be evaluated using visual tools. One such tool is LDAvis, a tool that got developed in R and D3 \cite{Sievert2014}. LDAvis is a web-based interactive visual of the topics on a fitted LDA model. The multidimensional LDA is scaled to two dimensions, making it possible to visually see the distance between topics and quickly determine their distinctiveness. Simultaneously the visual tool shows the relevance of each term in their selected topic, based on their exclusiveness and occurs within that topic compared to different topics.
+
+\subsection{parameter tuning}\label{results:parameter tuning}
 During the experimental phase. The research coneducted sucked, but Althought it sucked we got somewhere. 
 
 \section{Graphs of results}
@@ -69,7 +72,9 @@ During the experimental phase. The research coneducted sucked, but Althought it 
 Visualizing the messages is really fun!
 \end{comment}
 
-\section{Contribution}
+\section{Contribution}\label{results:contribution}
+
+
 
 \begin{comment}
 I dont think I contributed a lot to the research in this area, but I learned a lot right??

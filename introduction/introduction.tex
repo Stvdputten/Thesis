@@ -3,7 +3,7 @@
 \section{General introduction}\label{introduction:Generalinformation}
 The computers that we use have been generating data with an explosive rate in the last few years. The data is collected from different sources, transformed and aggregated to be put into a database or data warehouse. The data stays there and has a huge probability to never be used and eventually to be lost. Although companies acknowledge the value of data, it's challenging to make use of data and even more so to add value to their core business processes. The few challenges brought are due to the volume, velocity, variety of data to name a few. The recent field of machine learning or in a more general term called data science embraces data. The exploitation of data has improved operation of many day to day applications in recent years. 
 
-This thesis is formed with the data Capgemini provided. Capgemini is an international IT consultancy firm, offering customers multiple services. One of these services is the big data lake, which allows enormous amounts of data to be stored for further use. This data lake build with the Hadoop framework contains event logs. Capgemini allowed us access to their Big data lake, containing millions of server logs of their customers and systems. The servers logs are used to find explanation for whenever server failure occurs. Manually inspecting server logs is time consuming and is costly as only domain experts understand the server logs. This brings us to the request of the company to help them get more use out of their data. 
+\setlength{\parindent}{3ex} This thesis is formed with the data Capgemini provided. Capgemini is an international IT consultancy firm, offering customers multiple services. One of these services is the big data lake, which allows enormous amounts of data to be stored for further use. This data lake build with the Hadoop framework contains event logs. Capgemini allowed us access to their Big data lake, containing millions of server logs of their customers and systems. The servers logs are used to find explanation for whenever server failure occurs. Manually inspecting server logs is time consuming and is costly as only domain experts understand the server logs. This brings us to the request of the company to help them get more use out of their data. 
 
 With enough creativity and time we be able to use such a source of data to infinite use cases. Hence, the research started with the analyses of the data and eventually led to topic modelling, which can be classified as a form of unsupervised machine learning. Topic modelling can be described as the extraction of latent patterns, a.k.a. hidden topics, from data through semantic analysis. Readers who are further interested why topic modelling has been chosen are encouraged to read section \ref{conclusion:discussion}. 
 
@@ -16,7 +16,7 @@ During the time spent on this research challenges were met and identified for re
 
 \end{comment}
  
-\section{Motivation/probleemstelling}\label{introduction:Motivation}
+\section{Problem statement}\label{introduction:Motivation}
 Using the data to extract value is too general and that is why we need to focus on the exact motivation and goals of this thesis. The general steps are exploration of the data, to see what machine learning tool is applicable and to apply and optimise the model generated. The server logs generally consist of textual messages. The messages describe the servers and range from simple informational messages to severe messages where user intervention is necessary. The only problem with the data is that it does not make a distinction between the types of messages. The domain expert might know which messages to search for when the servers fail, but with millions of logs the domain expert cannot be aware of all the necessary logs, especially when the data contains no label to indicate their type. This is one of the reasons why we propose topic modelling. Topic modelling serves as a statistical technique mostly used to explore data, but can also be used to cluster similar messages.
 
 
@@ -26,7 +26,7 @@ Topic modelling is a hot topic in data science. System logs are used as source f
 
 \end{comment}
 
-\section{Research question}
+\section{Research question}\label{introduction:Researchquestion}
 We propose the following research question:
 
 Can we use topic modelling to classify and cluster error messages?
@@ -88,12 +88,18 @@ o	Hoe beinvloed de aanpassingen van parameters de uitkomst
 
  \end{comment}
  
-\section{Thesis Overview}
+\section{Thesis Overview} \label{introduction:thesisoverview}
 The remaining thesis is structured as follows\:
 
 \setlength{\parindent}{3ex} \textbf{Chapter \ref{ch:theory}}\: Two examples of previous research are described. Furthermore previous works on text mining, natural language processing, feature extraction, types of system logs, the application of machine learning, general machine learning knowledge and the buildings blocks are discussed.
 
+\textbf{Chapter \ref{ch:methodology}}\: This chapter includes the definitions and the chosen model LDA is described. The data has also been extracted and the steps describe the process and motivation behind each step. 
 
+\textbf{Chapter \ref{ch:result}}\: The model will be evaluated using 4 measurements, which measure the quality of the topic model showing different scores depending on the given parameters.
+
+\textbf{Chapter \ref{ch:conclusions}}\: The conclusion based on the found results. The possible future work, discussion and our final recommendation and thoughts about this research.
+
+\textbf{Chapter \ref{ch:appendices}}\: The appendix containing a overview of the capgemini dataset.
 
 
 \begin{comment}
