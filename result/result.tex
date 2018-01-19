@@ -65,8 +65,65 @@ With that in mind, the highly dimensional LDA is actually suitable in contrast t
 
 \subsection{parameter tuning}\label{results:parameter tuning}
 During the experimental phase. The research coneducted sucked, but Althought it sucked we got somewhere. 
+The setup to train our model with our dataset is very important to describe the eventual model. In table \ref{tab:table2} the parameters are shown together with their setting. Much of these settings are explained in table \ref{tab:table1} and based on the settings discussed in the original paper of LDA \cite{Blei2003} and the online LDA paper \cite{Hoffman2010OnlineAllocation}. 
+
+\begin{comment}
+# Time complexity is (n_samples * iterations)
+
+n_components = 3 #10
+alpha = float(5)/float(n_components)
+eta = 0.01
+
+batch_size = 4096 
+
+kappa = 0.5
+tau = 64
+    
+# n_docs_per_job = 10000
+n_jobs = -1
+
+#Samples
+total_samples = 426905
+n_samples = 4000 #2000
+n_features = 1694 #100
+
+max_iterations = 100
+test_mode = 'online'
+max_e_steps = 5
+eval_every = 10
+
+
+\end{comment}
+
+\begin{table}[h]
+\centering
+ \begin{tabular}{|l|l| l|} 
+ \hline
+ Parameter & value & description \\ 
+ \hline
+ $\alpha$ (alpha) & 5/Number of topics & \\  
+ $\beta$ (beta) & 0.1 &\\
+ batch size  & 4096 &\\
+ $\kappa$ (kappa) & 0.5 &\\
+ $\tau$ (tau) & 64 &\\
+ n docs per job & 10000&\\
+ n jobs & -1 &\\
+ Total samples & 426905&\\
+ n samples & 4000 &\\
+ n features & 1694 & \\
+ max iteration & 100 &\\
+ test mode & Online &\\
+ max e steps & 5 &\\
+ eval every & 10 &\\
+ \hline
+ \end{tabular}
+\caption{Parameter settings}
+\label{tab:table2}
+\end{table}
+
 
 \section{Graphs of results}
+
 
 \begin{comment}
 Visualizing the messages is really fun!
