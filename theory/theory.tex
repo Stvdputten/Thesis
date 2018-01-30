@@ -1,108 +1,78 @@
-\chapter{Research Background}  \label{ch:theory}
+\chapter{Theoretical Background}  \label{ch:theory}
 
-\begin{comment}
-\section{definitions}
-\end{comment}
+\begin{table}[h]
+\centering
+ \begin{tabular}{l l} 
+ \hline
+ SYMBOL & DESCRIPTION \\ 
+ \hline
+ $K$ & Number of Topics \\  
+ $V$ & Number of words in the vocabulary \\
+ $M$ & Number of documents \\
+ $N$ & Number of words in the document \\
+ $N_{d=1..M}$ & Number of words in document d\\
+ $\alpha$ & Collection of all $\alpha$ = $ \{ \alpha_{1},\alpha_{2}, ... , \alpha_{K}\}$ \\
+ $\alpha_{k=1...K}$ & Hyperparameter for dirichlet prior distribution of topic $k$ \\
+ $\beta$ &  Collection of all $\beta$ = $\{\beta{1},\beta{2}, ... , \beta_{K}\}$ \\
+ $\beta_{w=1...V}$ & Hyperparameter for dirichlet prior distribution of a word $w$ in a topic \\
+ $\varphi_{k=1...K}$ & Distribution of words in topic $k$ \\
+ $\varphi_{k=1...K, w=1...V}$ & Weight of  word $w$ in topic $k$  \\
+ $\theta{d=1...M}$ & Distribution of topics in document $d$  \\
+ $\theta{d=1...M, k=1...K}$ & Weight of  topic $k$ in document $d$ \\
+ $z_{d=1...M, w=1...N_d}$ & Assigned topic of word $w$ in document $d$\\
+ $Z$ & Topic of all words in documents \\
+ $w_{d=1...M, w=...N_d}$ & Assigned word w in document d \\ 
+ $W$ & Words in all documents \\ 
 
-In this chapter, related work will be described. In section \ref{theory:relatedwork}, research conducted on twitter tweets and cyber security are reviewed. In section \ref{theory:featureextraction}, research that has been conducted on extracting and transforming logs to features are described. Section \ref{theory:machinelearning} introduces the previous applications of topic modelling on system logs. The last section, \ref{theory:buildingblocks}, introduces the tools and frameworks used during this research.
+ \hline
+ \end{tabular}
+\caption{Complete notation of LDA}
+\label{tab:table1}
+\end{table}
 
-\section{Topic modelling in general} \label{theory:relatedwork}
-In this section, we briefly describe and show two researches that have applied topic modelling for different use cases. The descriptions will end with an overview explaining which parts are relevant to our current research. \par
+\section{Topic Modelling}\label{lda:tm}
+Topic models are models used to find latent topics in mostly large unstructured collections of documents. Topic modelling assumes that documents are a mixture of topics, while topics are a distribution of words. \cite{Blei2010}. Where humans have a hard time to find a structure, topic modelling uses statistical methods for analysing words for topic discovery. This makes it possible to compare topics with each other and to find similar documents without necessarily having any prior knowledge of your documents. The application of topic modelling is wide and is very powerful, making it a very popular for exploration of data. 
 
-\setlength{\parindent}{3ex} A research conducted in 2011 makes use of the numerous amounts of tweets on Twitter. Twitter is an online platform used to send messages about social media and news. Users make posts called tweets that are restricted to 140 characters. The authors are interested in finding news topics from twitter feeds and comparing the topics with traditional news feeds using Latent Dirichlet Allocation (LDA), see \ref{ch:methodology} for more explanation.
-
-The authors start with preparing three months worth of tweets of users and news feed data from New York Times. The tweets are filtered on stop words and tweets appearing more than 70\% of the time and less than 10 times are removed. The authors recognise that LDA does not perform very well on small tweets. To better fit the data to LDA, the authors aggregate the tweets of each user to a single document. The data is represented in a Bag of Words matrix and fitted to their custom Twitter-LDA model. The authors continue comparing the traditional LDA model and their own model using two human judges. The judges compare the generated topics, which are 10 words long, using a self-created scoring mechanism. The scored is based on each topics distinction and cohesion of words. The final results show that their Twitter-LDA model is better compared to the traditional LDA model. The results of their model showed more informative topics, which could not be extracted from the traditional news source \cite{Zhao2011ComparingModels}. 
-
-The second research is published in 2014 with the intention of exploring a big data use case. The National Center of Supercomputing Applications (NCSA) generates around 4.5 GB of data each day which are collected from security monitoring and system logs. The authors study a new approach of LDA on logs files for intrusion detection, moreover the authors propose that LDA can be used to detect patterns in log events. The model is trained to recognise normal activities and abnormal behaviour patterns found in the probability distribution of the topics over their data set. The resulting trained model is capable of detecting the semantics of the log events, which provide a higher level description of the intention of an invading user \cite{Jingwei2014KnowledgeLDA}. 
-
-In our research we will apply ideas mentioned in both researches. In the first paper we recognise two similarities with our own research. Our data set is similarly structured to tweets, which are short and domain specific. The second paper proposes an approach for using log files to detect intrusion, which is similar to our problem of detecting errors. Furthermore, the evaluation in both researches of their own model is based on human judgements and the semantic pattern recognition quality, which both depend on the distinct nature of the topics using cohesion and distinctiveness. In other words, the quality of our model is based on the topic quality detected after applying LDA.
-
-\begin{comment}
-The domain specific nature of our research is also explored in the second research paper.
-\end{comment}
-
-\section{Feature extraction from Logs}\label{theory:featureextraction}
-TO DO!!!! (misschien dubbel)
-Numerous log files are outputted by different servers, e.g. web server logs, system logs, etc. A log includes data that can be numerical or non-numerical data, depending on the format and source of the log. The content of each log can be used for feature extraction. Using text mining to extract the textual content from each log is suffice to be able to use the logs for our research.
-
-Logs are created in different kind of types, e.g. server logs, event logs and a lot more. The servers logs in the data set are streamed using Apache NiFi. Logs can be numerical data, but can also contain non-numerical data. The messages confined in logs are textual and as such can be analysed through Natural Language Processing. 
-
-\begin{comment}
-The data that logs can include can be numerical data and non-numerical data
-\setlength{\parindent}{3ex}  When we view the 
-
-\cite{Xu2009DetectingLogs}
-
-
-By comparing a traditional news source with
-Topic modelling is a very popular and high researched field. While topic modelling  
-An interesting adaptation of topic modelling can be found in twitter and cyber security. Twitter is a interesting field of research with real time tweets and a huge community. Due to the nature of twitter, analysing the huge stream of tweets can be a challenging and exhaustive task. A model with LDA has been introduced to analyse and detect topics. This model is an interesting way to provide news feeds even quicker then traditional news sites. Cyber security has also been an area which LDA seems applicable to. Through the usage of Big data and combination of LDA, users could be identified through system and network logs. Using the event logs to identify topics, new events of users could be identified as malicious or normal 
-
-\end{comment}
+The machine learning and text mining area have focused a lot on probabilistic topic models in recent years. Models like probabilistic latent semantic analysis (PLSA) and sentiment analysis are used for applications ranging from document clustering, topic modelling and retrieval systems \cite{Lu2011InvestigatingLDA}. Optimising models is a challenging task, making usage of a high range from inference e.g. variational, stochastic variational and Markov chain Monte Carlo \cite{Hoffman2016MarkovModels}. The model that is used in this research and build upon the before mentioned models will be discussed in great length below.
 
 
-\section{Machine learning} \label{theory:machinelearning}
-The idea of self learning computers have been conceived multiple decades ago, but only recently been greatly applied in our society.
-In the field of computer science, machine learning is defined as follows \cite{Samuel1959SomeCheckers}:\\
+\section{Latent dirichlet allocation}\label{lda:lda}
+In natural language processing, \textit{Latent dirichlet allocation} (LDA) is an unsupervised machine learning technique introduced in 2003 for Topic modelling \cite{Blei2003}. The notation used for LDA can be seen in Table \ref{tab:table1}. LDA is part of a larger field called probabilistic topic modelling \cite{Blei2010}.
 
-\theoremstyle{definition} 
-\begin{definition}{Machine Learning} 
-\\\textit{Machine learning gives computers the ability to learn without being explicitly programmed.}
-\end{definition}
+LDA makes use of a generative probabilistic model of a collection of documents \textbf{M} (corpus) to discover latent topics. Fig \ref{fig:LDA} represents the plate notation of LDA. For a more understandable model consider Fig \ref{fig:LDA_example}. The model assumes that each document \textbf{N} in the corpus consists of a mixture of latent topics. These topics are a mixture of words \textbf{W} assigned to a topic from a fixed vocabulary \textbf{V}. \textbf{Z} notates the assignment of specific words to topics. The distribution of words $\theta$ for each topic is dependent on the sensitivity of $\alpha$. The probability distribution of topics in documents $\varphi$ are depended on the sensitivity of $\beta$. The number of topics \textbf{K} are predefined by the user. 
 
+\begin{figure}
+    \centering
+    \includegraphics[width=10cm, height=5cm]{methodology/Smoothed_LDA.png}
+    \caption{The smoothed LDA plate notation}
+    \label{fig:LDA}
+\end{figure}
 
-As has  been mentioned before, machine learning exploits the abundance of data to learn. Machine learning uses the data and learns one of the following three ways. 
-
+The LDA model is defined in 3 steps and shown in Fig \ref{fig:LDA_example} :
 \begin{enumerate}
-    \item Supervised learning
-    \item Unsupervised learning
-    \item Semi-supervised learning (or reinforcement learning)
+    \item For each document, pick a topic from its assigned distribution over topics.
+    \item Sample a word from the distribution over the words associated with the chosen topic. 
+    \item  The process is repeated for all the words in the document.
 \end{enumerate}
 
-The distinction between the learning methods depends on the data. Either data is labelled or unlabelled data, e.g. pictures of named butterflies or unnamed butterflies. Supervised learning makes it easy to train and evaluate the model using labelled data. Unsupervised learning makes use of the patterns found in the unlabelled data. Reinforcement learning makes use of both labelled and unlabelled data to train itself. 
+Let us once again look at the mentioned Fig \ref{fig:LDA_example}. The topics are shown on the left side with their probability of words. On the right side, the document has a topic proportion. Every word gets assigned to a topic so that the topic proportion matches.  
+In the original LDA model, assignments of words get updated every iteration through the corpus M. Restarting the process again until the LDA model converges and the topic and assignment are stale. The eventual quality of the model depends on the assumed hyperparameters $\alpha$ and $\beta$ and parameters $\theta$ and $\varphi$. For a better understanding of the parameters take a look at section \ref{lda:alphabeta} and section \ref{lda:thetavarphi}.
 
-\subsection{Hard and Soft clustering}
-Machine learning divides data into clusters, either hard clusters or soft clusters. The results discussed in chapter \ref{ch:result} contains results based both upon hard and soft clustering. Clustering data can be achieved by giving every element of the data at most 1 label, this is called hard clustering. Soft clustering allows data to be part of multiple clusters or contain multiple labels. Especially when talking about topic modelling the distinction between hard and soft clustering can be vague. In topic modelling every document is a mixture of multiple topics this by itself is already a form of soft clustering. In chapter \ref{ch:methodology} we further discuss the meaning of clustering in our model.
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.6]{methodology/700px-Illustrating_LDA.jpg}
+    \caption{LDA applied to a document}
+    \label{fig:LDA_example}
+\end{figure}
 
-\section{Building blocks} \label{theory:buildingblocks}
-This section has an oversight of the main tools and packages used. This section might be mentioned or referenced in later parts of this paper. The packages were required for the extraction, loading and transforming the data in a usable form.
+\subsection{$\alpha$ and $\beta$ hyperparameters}  \label{lda:alphabeta}
+The dirichlet is defined as the distribution over a distribution. Dirichlet is used to infer a posterior distribution after observations using a prior distribution \cite{Sethuraman2001APRIORS}. Hyperparameters are defined as parameters that assume a prior distribution before any evidence or information is taken into account. This distinguishes $\alpha$ and $\beta$ from the remaining parameters. $\alpha$ and $\beta$ are both dirichlet distributions. The hyperparameter value $\alpha$ is the parameter of the dirichlet prior on the per-document topic distributions. The result of a high value of $\alpha$ is a document with a mixture of most topics, while the low value leads to documents with more distinct topics. The $\alpha$ results in a corpus with distinct documents or more general documents topic assignments. The value $\beta$ is the parameter of the dirichlet prior of a word in a topic. A high value for $\beta$ means that the topics consists of distinct words, the low value of $\beta$ assumes topics are more generative. The $\beta$ will influence the general distribution of words in topics in the output of topics. We base our $\alpha and \beta$ on earlier research that that $\alpha = 50/T$ with $\beta = 0.01$ works great with many different text collections.
 
-\subsection{Packages and libraries}
+\subsection{$\theta$, $\varphi$ parameters}\label{lda:thetavarphi}
+The parameters $\theta, \varphi$ are depend on the prior distributions $\alpha$ and $\beta$. $\theta$ is the document-topic distribution. $\theta$ is the weight of a topic in a document and because $\alpha$ is a prior distribution, $\theta$ assumes a distribution based on the previous assigned distribution. 
+In the same way $\varphi$ is the weight of words in a topic. $\varphi$ in this case is dependent on the $\beta$.
 
-\begin{enumerate}
-    \item \textbf{Hadoop} $($\url{http://hadoop.apache.org/}$)$ \\
-    The Apache Hadoop software library is a framework that allows for the distributed processing of large data sets across clusters of computers using simple programming models. 
-    \begin{enumerate}
-        \item \textbf{HDFS} $($\url{http://hadoop.apache.org/}$)$ \\
-        A distributed file system that provides high-throughput access to application data. Used to store big data.
-        \item \textbf{Apache Spark} $($\url{https://spark.apache.org/}$)$\\
-        Apache Spark is a fast and general engine for large-scale data processing.
-        \item \textbf{Apache Zeppelin} $($\url{https://zeppelin.apache.org/}$)$ \\
-         Web-based notebook that enables data-driven, interactive data analytics and collaborative documents with SQL, Scala and more.
-    \end{enumerate}
-    
-    \item \textbf{Scikit-learn} $($\url{http://scikit-learn.org/}$)$ \\
-    The Scikit-learn package contains tools for effici\"ent data mining and data analysis with machine learning in Python.
-    \begin{enumerate}
-        \item \textbf{Pandas} $($\url{http://pandas.pydata.org/}$)$ \\
-        Pandas is a library providing high-performance, easy-to-use data structures and data analysis tools for the Python programming language.
-        \item \textbf{Numpy} $($\url{http://www.numpy.org/}$)$ \\
-        Numpy is a scientific package with Python for powerful array objects, functions and lots of mathematical capabilities.
-        \item \textbf{Matplotlib} $($\url{http://matplotlib.org/}$)$ \\
-        Matplotlib is a 2D Python plotting library very similar to MATLAB.
-        \item \textbf{Seaborn} $($\url{https://seaborn.pydata.org/}$)$ \\
-        Seaborn is a Python visualization library based on matplotlib. It provides a high-level interface for drawing attractive statistical graphics.
-        \item \textbf{pyLDAvis} $($\url{https://www.python.org/}$)$\\
-        The pyLDAvis package is designed to help users interpret the topics in a topic model that has been fit to a corpus of text data. The package extracts information from a fitted LDA topic model to inform an interactive web-based visualization and can be used in combination with sklearn.
-    \end{enumerate}
-    
-    \item \textbf{Conda} $($\url{https://www.anaconda.com/}$)$ \\
-    Conda is an open source package and environment management for Python. Conda allows easy setup with out-of-the-box environments for quick testing and removal of environments.
-    \begin{enumerate}
-        \item \textbf{Jupyter Notebook} $($\url{https://jupyter.org/}$)$ \\
-        Jupyter notebook is included in the standard data science conda package. A fast web application used to create documents in Python code to easily share code and visualise data.
-        \item \textbf{Python 2.7.X} $($\url{https://www.python.org/}$)$\\
-        An user-friendly and elegant programming language which has a great scientific community, making Python the go to language for data science.
-    \end{enumerate}
-    
-\end{enumerate}
+
+
+\subsection{Online Latent dirichlet allocation} \label{lda:onlinelda}
+The online variant of LDA was introduced  by Hoffman et al. in 2010.\cite{Hoffman2010OnlineAllocation} This new variation dealt with the problem earlier LDA models struggled with. The problem that LDA had was the computing of huge collections of documents. The online LDA can be used for massive and streaming documents without losing performance compared to the original LDA model, because it analyses the documents in batches instead of single observations with stochastic (random) optimisation \cite{Beaver2012}. This research also assumes the online model for similar performance and improved computational time.
