@@ -1,7 +1,10 @@
 \chapter{Methodology}  \label{ch:methodology}
 
+In this chapter we explain the preprocessing and approach on training the model. In  section \ref{methodology:Text preprocessing}, all the steps described in the text mining and processing of our data. The 
+
+
 \section{Text preprocessing}\label{methodology:Text preprocessing}
-In this section we'll talk about the input dataset, the reason why we selected it and how it got processed for our model. Preprocessing involves tokenization and stop word removal discussed in section \ref{tokenization} - \ref{bagow}. Preprocessing is important and if done wrong can impact the final results. This can be related to the garbage in, garbage out principle in computer science, where flawed input brings nonsense output. 
+In this section we'll talk about the input dataset, the reason why we selected it and how it got processed for our model. Preprocessing involves tokenization and stop word removal discussed in section \ref{methodology:tokenization} - \ref{methodology:bagow}. Preprocessing is important and if done wrong can impact the final results. This can be related to the garbage in, garbage out principle in computer science, where flawed input brings nonsense output. 
 
 \subsection{Dataset}
 The dataset used in this research is provided by Capgemini containing syslogs from various servers. The syslogs contains event logs from different servers provided to their customers and internal staff. The event logs used on their servers were extracted from different operating systems, ranging from the year 2015 to current day. The size of one day of data can easily range into the 20 - 40 million event logs. Due to the size and complexity and computation time of the dataset, this research contains 1 day of data with the word error to ensure it's associaten with erorrs.
@@ -19,7 +22,7 @@ The data will be referred as the corpus and the system logs as documents through
  \hline
  \end{tabular}
 \caption{Statistics about the dataset}
-\label{tab:table1}
+\label{tab:table2}
 \end{table}
 
 
