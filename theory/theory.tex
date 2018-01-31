@@ -1,5 +1,31 @@
 \chapter{Theoretical Background}  \label{ch:theory}
 
+
+Section \ref{theory:machinelearning} introduces the previous applications of topic modelling on system logs. 
+
+\section{Machine learning} \label{theory:machinelearning}
+The idea of self learning computers have been conceived multiple decades ago, but only recently been greatly applied in our society.
+In the field of computer science, machine learning is defined as follows \cite{Samuel1959SomeCheckers}:\\
+
+\theoremstyle{definition} 
+\begin{definition}{Machine Learning} 
+\\\textit{Machine learning gives computers the ability to learn without being explicitly programmed.}
+\end{definition}
+
+
+As has  been mentioned before, machine learning exploits the abundance of data to learn. Machine learning uses the data and learns one of the following three ways. 
+
+\begin{enumerate}
+    \item Supervised learning
+    \item Unsupervised learning
+    \item Semi-supervised learning (or reinforcement learning)
+\end{enumerate}
+
+The distinction between the learning methods depends on the data. Either data is labelled or unlabelled data, e.g. pictures of named butterflies or unnamed butterflies. Supervised learning makes it easy to train and evaluate the model using labelled data. Unsupervised learning makes use of the patterns found in the unlabelled data. Reinforcement learning makes use of both labelled and unlabelled data to train itself. 
+
+\subsection{Hard and Soft clustering}
+Machine learning divides data into clusters, either hard clusters or soft clusters. The results discussed in chapter \ref{ch:result} contains results based both upon hard and soft clustering. Clustering data can be achieved by giving every element of the data at most 1 label, this is called hard clustering. Soft clustering allows data to be part of multiple clusters or contain multiple labels. Especially when talking about topic modelling the distinction between hard and soft clustering can be vague. In topic modelling every document is a mixture of multiple topics this by itself is already a form of soft clustering. In chapter \ref{ch:methodology} we further discuss the meaning of clustering in our model.
+
 \begin{table}[h]
 \centering
  \begin{tabular}{l l} 

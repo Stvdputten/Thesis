@@ -22,7 +22,7 @@ The model used is ofcourse LDA.
 \section{Evaluation Measures}\label{results:evaluation measures}
 To evaluate our implementation we use different metrics. Evaluating an unsupervised learning model depends on the application and the goal the model is made with. In our case the metrics are here to evaluate the models capability to generalise, using perplexity. The clusters are evaluated based on their inner similarity between documents and \" distance \" compared to other cluster centroids, using Silhouette co\"efficient. The distance metric used for silhouette co\"efficient is based on the KL-divergence metric. The last measurement we use is coherence in topics and the measurement of distance between topic document clusters using the visual tool LDAvis.
 
-\subsection{Perplexity}\label{research:perplexity}
+\subsection{Perplexity}\label{result:perplexity}
 In the original paper Blei introduces a general model evaluation metric \cite{Blei2003} to compare topic models. Perplexity can be used to compare the generalisation of a model on new unlabelled data.
 
 \[
@@ -33,7 +33,7 @@ Perplexity shows the perplexity on the test set of held out documents $\textbf{D
 The lower the perplexity score the better a model generalises. 
 
 
-\subsection{Silhouette coefficient} \label{research:silhouette}
+\subsection{Silhouette coefficient} \label{results:silhouette}
 The silhouette is used to measure between the cohesion and the separation of intra-clusters. In our model this measures the mean intra-cluster distance for each document and compares distance to the nearest-cluster distance.
 
 \[
