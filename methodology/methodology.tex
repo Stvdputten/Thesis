@@ -1,14 +1,13 @@
 \chapter{Methodology}  \label{ch:methodology}
 
-In this chapter we explain the preprocessing and approach on training the model. In  section \ref{methodology:Text preprocessing}, all the steps described in the text mining and processing of our data. The 
+In this chapter, the dataset and methodology are described. Section \ref{methodology:dataset} examines the data. In section \ref{methodology:Text preprocessing} the steps of transforming the data is described. Lastly, section \ref{methodology:evaluation measures} describes our 4 evaluation measures to train and tune our model.
 
+\section{Dataset}\label{methodology:dataset}
+The dataset used in this research is provided by Capgemini containing syslogs from various servers. The syslogs contains event logs from different servers provided to their customers and internal staff. The event logs used on their servers were extracted from different operating systems, ranging from the year 2015 to current day. The size of one day of data can easily range into the 20 - 40 million event logs. Due to the size and complexity and computation time of the dataset, this research contains 1 day of data with the word error to ensure it's association with errors.
+The data will be referred as the corpus and the system logs as documents throughout this research. The corpus contains 426928 records and has messages consisting of small twitter like sizes. The documents has a few features like hostname, severity, port, priority, valid, protocol, body. The features contain little information and will not be used, only the body feature has been extracted which contains the textual message of the syslog.
 
 \section{Text preprocessing}\label{methodology:Text preprocessing}
-In this section we'll talk about the input dataset, the reason why we selected it and how it got processed for our model. Preprocessing involves tokenization and stop word removal discussed in section \ref{methodology:tokenization} - \ref{methodology:bagow}. Preprocessing is important and if done wrong can impact the final results. This can be related to the garbage in, garbage out principle in computer science, where flawed input brings nonsense output. 
-
-\subsection{Dataset}
-The dataset used in this research is provided by Capgemini containing syslogs from various servers. The syslogs contains event logs from different servers provided to their customers and internal staff. The event logs used on their servers were extracted from different operating systems, ranging from the year 2015 to current day. The size of one day of data can easily range into the 20 - 40 million event logs. Due to the size and complexity and computation time of the dataset, this research contains 1 day of data with the word error to ensure it's associaten with erorrs.
-The data will be referred as the corpus and the system logs as documents throughout this research. The corpus contains 426928 records and has messages consisting of small twitter like sizes. The documents has a few features like hostname, severity, port, priority, valid, protocol, body. The features contain little information and will not be used, only the body feature has been extracted which contains the event log.
+In this section we will talk about the input dataset, the reason why we selected it and how it got processed for our model. Preprocessing involves tokenization and stop word removal discussed in section \ref{methodology:tokenization} - \ref{methodology:bagow}. Preprocessing is important and if done wrong can impact the final results. This can be related to the garbage in, garbage out principle in computer science, where flawed input brings nonsense output. 
 
 
 \begin{table}[h]
@@ -25,18 +24,25 @@ The data will be referred as the corpus and the system logs as documents through
 \label{tab:table2}
 \end{table}
 
+The following sections will step by step explain the transformation of the data.
+
+TO DO!!!
 
 \subsection{Tokenization}\label{methodology:tokenization}
-The first step for our preprocessing is the cleaning up of the documents. 
+The first step for our preprocessing is the cleaning of the documents. 
 In the preprocessing phase the document needs to be cleaned up and normalised to ensure consistency in the input data.
 
-The content of the document consists of the error message and specific user and server information. An algorithm had to be written to remove the unnecessary information from the dataset. This extracted the message from document and removed the specific users and server information from the message. Afterwards the message got normalised by removing unnecessary punctuation and removing uppercase.
+The content of the document consists of the error message and specific user and server information. An algorithm had to be written to remove the unnecessary information from the data set. This extracted the message from document and removed the specific users and server information from the message. Afterwards the message got normalised by removing unnecessary punctuation and removing uppercase.
 
 \subsection{Stop word}\label{methodology:stop_words}
-LDA assumes that each word is equally important, which is simply deduced to not be true from a logical and linguistic point of few. Words such as 'the' and 'a\\an' are not important, generic English words can be removed to only keep the most distinguishable words left. The provided tools in sklearn provide a standard tokenization option with stop words from the English vocabulary. This tool removes remaining ambigious words like single character words and leaves the most important words left that are specific to the error message.
+LDA assumes that each word is equally important, which is simply deduced to not be true from a logical and linguistic point of few. Words such as 'the', 'a' and 'an' are not important, generic English words can be removed to only keep the most distinguishable words left. The provided tools in sklearn provide a standard tokenization option with stop words from the English vocabulary. This tool removes remaining ambiguous words like single character words and leaves the most important words left that are specific to the error message.
 
 \subsection{Bag of words} \label{methodology:bagow}
-The text preprocessing in this research makes usage of the bag-of-words representation as LDA makes the assumption that the order of the words does not matter \cite{Blei2010}. Bag of word counts the words that appeared in the document and represent the words in a document as a term frequency matrix. The bag of words representation of a document doesn't take in the order or semantic structure in a document, but LDA discovers these semantic structures itself. 
+The text preprocessing in this research makes usage of the \textit{bag of words}(bow) representation as LDA makes the assumption that the order of the words does not matter \cite{Blei2010}. Bag of word counts the words that appeared in the document and represent the words in a document as a term frequency matrix. The bag of words representation of a document does not take in the order or semantic structure in a document, but LDA discovers these semantic structures itself. 
+
+\begin{comment}
+An other notable representation is the \textit{term frequency inverse document matrix} (tf-idm) in topic modelling. Tf-idm increases the weight terms with less frequency have. This makes tf-idm more appealing when assuming infrequent terms are important. Because tf-idm already reduces the dimension of the terms, lda cannot use this matrix as input. 
+\end{comment}
 
 \subsection{Dimensionality reduction} \label{methodology:dimreduction}
 The reason LDA is widely applied for text clustering is because LDA actually reduces the dimension, reducing the computation time. Reducing the dimension with LDA allows the usage of Jensen-Shannon distance to measure text similarity, which we discuss in section \ref{research:jsdivergence}. The generated output is also suitable for clustering, but the output can also be interpreted as clusters.
@@ -74,7 +80,7 @@ In the original paper Blei introduces a general model evaluation metric \cite{Bl
 \]
 
 Perplexity shows the perplexity on the test set of held out documents $\textbf{D}$. The nominator shows the sum in  corpus $M$ with document $d$, where the likelihood of each word in d is computed. The denominator consists of the count of words $N$ in document $d$.
-The lower the perplexity score the better a model generalises. 
+The lower the perplexity score the better a model generalises.
 
 
 \subsection{Silhouette coefficient} \label{methodology:silhouette}
@@ -107,6 +113,6 @@ Although LDA can be used to find latent patterns, explore, tag recommend in a do
 
 With that in mind, the highly dimensional LDA is actually suitable in contrast to most machine learning techniques to be evaluated using visual tools. One such tool is LDAvis, a tool that got developed in R and D3 \cite{Sievert2014}. LDAvis is a web-based interactive visual of the topics on a fitted LDA model. The multidimensional LDA is scaled to two dimensions, making it possible to visually see the distance between topics and quickly determine their distinctiveness. Simultaneously the visual tool shows the relevance of each term in their selected topic, based on their exclusiveness and occurs within that topic compared to different topics.
 
-\subsection{parameter tuning}\label{methodology:parameter tuning}
+\subsection{Parameter tuning}\label{methodology:parameter tuning}
 During the experimental phase. The research coneducted sucked, but Althought it sucked we got somewhere. 
 The setup to train our model with our dataset is very important to describe the eventual model. In table \ref{tab:table2} the parameters are shown together with their setting. Much of these settings are explained in table \ref{tab:table1} and based on the settings discussed in the original paper of LDA \cite{Blei2003} and the online LDA paper \cite{Hoffman2010OnlineAllocation}. 

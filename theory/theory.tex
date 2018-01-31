@@ -60,9 +60,9 @@ Topic models are models used to find latent topics in mostly large unstructured 
 
 The machine learning and text mining area have focused a lot on probabilistic topic models in recent years. Models like probabilistic latent semantic analysis (PLSA) and sentiment analysis are used for applications ranging from document clustering, topic modelling and retrieval systems \cite{Lu2011InvestigatingLDA}. Optimising models is a challenging task, making usage of a high range from inference e.g. variational, stochastic variational and Markov chain Monte Carlo \cite{Hoffman2016MarkovModels}. The model that is used in this research and build upon the before mentioned models will be discussed in great length below.
 
-
-\section{Latent dirichlet allocation}\label{theory:lda}
-In natural language processing, \textit{Latent dirichlet allocation} (LDA) is an unsupervised machine learning technique introduced in 2003 for Topic modelling \cite{Blei2003}. The notation used for LDA can be seen in Table \ref{tab:table1}. LDA is part of a larger field called probabilistic topic modelling \cite{Blei2010}.
+\section{Latent Dirichlet allocation}\label{theory:lda}
+In natural language processing, \textit{Latent dirichlet allocation} (LDA) is an unsupervised machine learning technique introduced in 2003 for Topic modelling \cite{Blei2003}.
+The notation used for LDA can be seen in Table \ref{tab:table1}. LDA is part of a larger field called probabilistic topic modelling \cite{Blei2010}.
 
 LDA makes use of a generative probabilistic model of a collection of documents \textbf{M} (corpus) to discover latent topics. Fig \ref{fig:LDA} represents the plate notation of LDA. For a more understandable model consider Fig \ref{fig:LDA_example}. The model assumes that each document \textbf{N} in the corpus consists of a mixture of latent topics. These topics are a mixture of words \textbf{W} assigned to a topic from a fixed vocabulary \textbf{V}. \textbf{Z} notates the assignment of specific words to topics. The distribution of words $\theta$ (theta) for each topic is dependent on the sensitivity of $\alpha$ (alpha). The probability distribution of topics in documents $\varphi$ (phi) are depended on the sensitivity of $\beta$ (beta). The number of topics \textbf{K} are predefined by the user. 
 
