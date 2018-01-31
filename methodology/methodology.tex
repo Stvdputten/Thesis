@@ -1,10 +1,6 @@
 \chapter{Methodology}  \label{ch:methodology}
 
-\begin{comment}
-Why did I choose my method
-\end{comment}
-
-\section{Text preprocessing}
+\section{Text preprocessing}\label{methodology:Text preprocessing}
 In this section we'll talk about the input dataset, the reason why we selected it and how it got processed for our model. Preprocessing involves tokenization and stop word removal discussed in section \ref{tokenization} - \ref{bagow}. Preprocessing is important and if done wrong can impact the final results. This can be related to the garbage in, garbage out principle in computer science, where flawed input brings nonsense output. 
 
 \subsection{Dataset}
@@ -27,24 +23,24 @@ The data will be referred as the corpus and the system logs as documents through
 \end{table}
 
 
-\subsection{Tokenization}\label{tokenization}
+\subsection{Tokenization}\label{methodology:tokenization}
 The first step for our preprocessing is the cleaning up of the documents. 
 In the preprocessing phase the document needs to be cleaned up and normalised to ensure consistency in the input data.
 
 The content of the document consists of the error message and specific user and server information. An algorithm had to be written to remove the unnecessary information from the dataset. This extracted the message from document and removed the specific users and server information from the message. Afterwards the message got normalised by removing unnecessary punctuation and removing uppercase.
 
-\subsection{Stop word}\label{stop_words}
+\subsection{Stop word}\label{methodology:stop_words}
 LDA assumes that each word is equally important, which is simply deduced to not be true from a logical and linguistic point of few. Words such as 'the' and 'a\\an' are not important, generic English words can be removed to only keep the most distinguishable words left. The provided tools in sklearn provide a standard tokenization option with stop words from the English vocabulary. This tool removes remaining ambigious words like single character words and leaves the most important words left that are specific to the error message.
 
-\subsection{Bag of words} \label{bagow}
+\subsection{Bag of words} \label{methodology:bagow}
 The text preprocessing in this research makes usage of the bag-of-words representation as LDA makes the assumption that the order of the words does not matter \cite{Blei2010}. Bag of word counts the words that appeared in the document and represent the words in a document as a term frequency matrix. The bag of words representation of a document doesn't take in the order or semantic structure in a document, but LDA discovers these semantic structures itself. 
 
-\subsection{Dimensionality reduction}
+\subsection{Dimensionality reduction} \label{methodology:dimreduction}
 The reason LDA is widely applied for text clustering is because LDA actually reduces the dimension, reducing the computation time. Reducing the dimension with LDA allows the usage of Jensen-Shannon distance to measure text similarity, which we discuss in section \ref{research:jsdivergence}. The generated output is also suitable for clustering, but the output can also be interpreted as clusters.
 
 \begin{comment}
 
-\section{Syslog} 
+\section{Syslog}\label{methodology:syslog}
 Syslogs are textual messages \cite{Stearley2004TowardsSyslogs} which contain the messages provided by the systems.
 
 
@@ -62,3 +58,52 @@ Syslogs are textual messages \cite{Stearley2004TowardsSyslogs} which contain the
 \subsection{Extract, Transform, Load}
 
 \end{comment}
+
+
+\section{Evaluation Measures}\label{methodology:evaluation measures}
+To evaluate our implementation we use different metrics. Evaluating an unsupervised learning model depends on the application and the goal the model is made with. In our case the metrics are here to evaluate the models capability to generalise, using perplexity. The clusters are evaluated based on their inner similarity between documents and \" distance \" compared to other cluster centroids, using Silhouette co\"efficient. The distance metric used for silhouette co\"efficient is based on the KL-divergence metric. The last measurement we use is coherence in topics and the measurement of distance between topic document clusters using the visual tool LDAvis.
+
+\subsection{Perplexity}\label{methodology:perplexity}
+In the original paper Blei introduces a general model evaluation metric \cite{Blei2003} to compare topic models. Perplexity can be used to compare the generalisation of a model on new unlabelled data.
+
+\[
+   \mathlarger{perplexity(\textbf{D}_{test}) = \exp{\Bigg \{ -\frac{\sum{}_{d=1}^{M}logp(\textbf{w}_d)}{\sum{}_{d=1}^{M}N_d} \Bigg \}}}
+\]
+
+Perplexity shows the perplexity on the test set of held out documents $\textbf{D}$. The nominator shows the sum in  corpus $M$ with document $d$, where the likelihood of each word in d is computed. The denominator consists of the count of words $N$ in document $d$.
+The lower the perplexity score the better a model generalises. 
+
+
+\subsection{Silhouette coefficient} \label{methodology:silhouette}
+The silhouette is used to measure between the cohesion and the separation of intra-clusters. In our model this measures the mean intra-cluster distance for each document and compares distance to the nearest-cluster distance.
+
+\[
+   \mathlarger{s(i) = \frac{b(i) - a(i)}{\max{\{ a(i), b(i)}\} } }
+\]
+
+Where $s_i$ is the silhouette of sample $i$ in the cluster. $a_i$ is the average distance for $i$ from all the objects in the cluster and $b_i$ the distance of $i$ from a cluster $b$ not containing $i$. 
+
+\[
+\mathlarger{-1 \leq s \le 1}
+\]
+
+The value of $s$ will be contained between $-1$ and $1$. If $s(i) = 1$ then we can say that the distance $i$  is a lot less in its own cluster then the nearest other cluster. If we take $s(i) = -1$ then the similarity of $i$ is higher in the other nearest cluster then its current cluster \cite{Rousseeuw1987Silhouettes:Analysis}.
+
+
+\subsection{Jensen-Shannon divergence and KL-divergence} \label{research:jsdivergence}
+The Kullback Leiber divergence was introduced to measure the density between to distributions \cite{Hershey2007ApproximatingModels}. Based upon this important and popular measure the Jensen-Shannon divergence (JS) was introduced \cite{Fuglede2004Jensen-ShannonEmbedding}. Which is better used to measure similarity between two text documents based on their probability distributions.
+
+\[
+\mathlarger{JDS(P||Q) = \frac{1}{2}D(P||M) + \frac{1}{2}D(Q||M)}
+\]
+
+Where $P$ and $Q$ denote a probability distribution and $M$ the set of probability distributions. The useful if especially to find the distinctiveness and cohesion between topics
+
+\subsection{Human perception}\label{methodology:humanperception}
+Although LDA can be used to find latent patterns, explore, tag recommend in a document corpus the final result of topics do not necessarily match up with the human expectation of a topic. Especially in a unsupervised learning model with only mathematical measures\cite{Towne2016MeasuringPerception}. The reason of this paragraph is to make readers aware that the suitability of a model in a unsupervised learning and NLP environment still need support of a human factor. Research from Chang  et al. \cite{Chang2009ReadingModels} and Blei et al. \cite{Chaney2012VisualizingModels.} provide more in depth research in this topic.  
+
+With that in mind, the highly dimensional LDA is actually suitable in contrast to most machine learning techniques to be evaluated using visual tools. One such tool is LDAvis, a tool that got developed in R and D3 \cite{Sievert2014}. LDAvis is a web-based interactive visual of the topics on a fitted LDA model. The multidimensional LDA is scaled to two dimensions, making it possible to visually see the distance between topics and quickly determine their distinctiveness. Simultaneously the visual tool shows the relevance of each term in their selected topic, based on their exclusiveness and occurs within that topic compared to different topics.
+
+\subsection{parameter tuning}\label{methodology:parameter tuning}
+During the experimental phase. The research coneducted sucked, but Althought it sucked we got somewhere. 
+The setup to train our model with our dataset is very important to describe the eventual model. In table \ref{tab:table2} the parameters are shown together with their setting. Much of these settings are explained in table \ref{tab:table1} and based on the settings discussed in the original paper of LDA \cite{Blei2003} and the online LDA paper \cite{Hoffman2010OnlineAllocation}. 

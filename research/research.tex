@@ -1,13 +1,9 @@
 \chapter{Research Background}  \label{ch:research}
 
-\begin{comment}
-\section{definitions}
-\end{comment}
-
 In this chapter, related research will be described. In section \ref{research:relatedwork}, research conducted on twitter tweets and cyber security are reviewed. In section \ref{research:featureextraction}, research that has been conducted on extracting and transforming logs to features are described. The last section, \ref{research:buildingblocks}, introduces the tools and frameworks used during this research.
 
-\section{Topic modelling in general} \label{research:relatedwork}
-In this section, we briefly describe and show two researches that have applied topic modelling for different use cases. The descriptions will end with an overview explaining which parts are relevant to our current research. \par
+\section{Topic modelling in Twitter and NCSA} \label{research:relatedwork}
+In this section, we briefly describe and show two researches that have applied topic modelling for different use cases. The descriptions will end with an overview explaining which parts are relevant to our current research. 
 
 \setlength{\parindent}{3ex} A research conducted in 2011 makes use of the numerous amounts of tweets on Twitter. Twitter is an online platform used to send messages about social media and news. Users make posts called tweets that are restricted to 140 characters. The authors are interested in finding news topics from twitter feeds and comparing the topics with traditional news feeds using Latent Dirichlet Allocation (LDA), see \ref{ch:methodology} for more explanation.
 
@@ -17,15 +13,10 @@ The second research is published in 2014 with the intention of exploring a big d
 
 In our research we will apply ideas mentioned in both researches. In the first paper we recognise two similarities with our own research. Our data set is similarly structured to tweets, which are short and domain specific. The second paper proposes an approach for using log files to detect intrusion, which is similar to our problem of detecting errors. Furthermore, the evaluation in both researches of their own model is based on human judgements and the semantic pattern recognition quality, which both depend on the distinct nature of the topics using cohesion and distinctiveness. In other words, the quality of our model is based on the topic quality detected after applying LDA.
 
-\begin{comment}
-The domain specific nature of our research is also explored in the second research paper.
-\end{comment}
-
-\section{Feature extraction from Logs}\label{research:featureextraction}
-TO DO!!!! (misschien dubbel)
-Numerous log files are outputted by different servers, e.g. web server logs, system logs, etc. A log includes data that can be numerical or non-numerical data, depending on the format and source of the log. The content of each log can be used for feature extraction. Using text mining to extract the textual content from each log is suffice to be able to use the logs for our research.
-
-Logs are created in different kind of types, e.g. server logs, event logs and a lot more. The servers logs in the data set are streamed using Apache NiFi. Logs can be numerical data, but can also contain non-numerical data. The messages confined in logs are textual and as such can be analysed through Natural Language Processing. 
+\section{Feature extraction from logs}\label{research:featureextraction}
+Numerous log files are outputted by different servers, e.g. web server logs, system logs, etc. A log includes data that can be numerical or non-numerical data, depending on the format and source of the log. Intel researched log based predictive maintenance back in 2014 \cite{Sipos2014Log-basedMaintenance}. The logs contained 3 types of information which was used for feature extraction. 
+The content of each log can be used for feature extraction which depends on the type of data.
+Keywords from textual messages were extracted using parsing and transformed to a bag of words representation. The numerical values were decoded and event codes for sequential analysis. We apply the same text mining techniques to extract only the textual content from our data and transform the data to a usable state.
 
 \begin{comment}
 The data that logs can include can be numerical data and non-numerical data
