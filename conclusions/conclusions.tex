@@ -1,28 +1,30 @@
 \chapter{Conclusions} \label{ch:conclusions}
 
-\section {Future work}
+\section{Research questions}
+
+
+
+\section{Conclusion}
+
+\section{Discussion}
+
+\subsection {Disputable methodology}
 This research took only a small possible path in the finite amount of paths. This section will discuss what future work can be done to improve this research.
 
-\subsection{Scalability}
+\subsection{The reason leading up to LDA}\label{conclusion:discussion}
+Although the discussed research has been mainly focused around topic modelling (LDA) on finding similar error logs, the original research question started with a related but different subject. During this section I would like to discuss the original focus of predictive maintenance, as a lot of time has also been put in researching this difficult and challenging task. !!The points that will be discussed are the general application of predictive maintenance and process, the primary tools used, the identified challenges particular to our data set and environment and a recommendation for future work on this subject.!! This part has probably taken 40\% of the total time spent to complete this Thesis, without even being mentioned in the thesis.
 
-\subsection{Patterns}
+\subsubsection{Predictive maintenance}
+With the combined application of machine learning and big data companies try to anticipate when machine hardware failure are due to occur. Predicting instead of reacting to problems saves time and money and allows for a better customer experience which can be found in the before mentioned research of Intel \cite{Sipos2014Log-basedMaintenance}\cite{AjayChandramoulyRavindraNarkhedeVijayMungaraGuillermoRueda2013ReducingAnalytics}. It is not hard to imagine why companies like Intel  or Google have already been researching the possibility of big data for this problem. Capgemini came with comparable data to the before mentioned researches to use machine learning to talk about Predictive Maintenance.
 
-\subsection{Predictive analysis}
+\subsubsection{Vrops and syslogs}
+The data had not only been system logs but also consisted of vrops logs. In a few words, vrops are unstructured logs created by the virtualisation tools of VMware. The data contained health and performance statistics of their multiple servers. Extracting the values from the vrops databases with the Hadoop framework had great promise to lead to the desired research dataset. Furthermore the syslogs contained an indication of the type of log. Extracting the messages which were severe errors could help label the dataset. Combining the syslogs and vrops seemed the way to go. 
 
+\subsubsection{Unlabelled and unstructured}
+Sadly enough, the syslogs were never labelled with their type. This seemed to be a mistake made by their developers when implementing Apache NiFi, which made the data set of the last three years unlabelled and unstructured. This in turn made it impossible to use the vrops values to correctly know when system problems would occur, without having a domain expert available all the time. The only logical step was to find a more mathematical suitable way to label the unlabelled and unstructured data, bringing this research again to the literature study phase after already 3 months of progress.
 
-\section{Discussion}\label{conclusion:discussion}
-Although the discussed research has been mainly focused around topic modelling (LDA) and finding similar logs, the original research question started with a related but different subject. During this section i'd like to discuss the original focus of predictive maintenance, as a lot of time has also been put in researching this difficult and challenging task. The points that will be discussed are the general application of predictive maintenance and process, the primary tools used, the identified challenges particular to our data set and environment and a recommendation for future work on this subject. This part has probably taken 40\% of the total time spent to complete this Thesis.
+\subsubsection{Topic modelling}
+Going back and forth between different algorithms available, my supervisor finally hinted at Latent Dirichlet Allocation(LDA). Lots of research has been done with LDA. Having already been wasting enough time on searching, this research had to settle for a technique. LDA seemed like an applicable algorithm to this problem based on earlier research. Text mining on logs has been done before, although barely on unlabelled logs. Training LDA on unlabelled data was common, expect that a lot of data contained either longer documents or a less domain specific dataset. In further research I would not recommend LDA for domain specific log research and labelling, unless one has enough time and patience. 
 
-\subsection{Predictive maintenance}
-With the combined application of machine learning and big data companies try to anticipate when machine hardware failure are due to occur. Predicting instead of reacting to problems saves time and money and allows for a better customer experience. It's not hard to imagine why companies like Intel \cite{AjayChandramoulyRavindraNarkhedeVijayMungaraGuillermoRueda2013ReducingAnalytics} or Google have already been researching the possibility of big data for this problem. 
-The original data set discussed in chapter \ref{ch:theory} has a lot in common with earlier research done on predictive maintenance \cite{Sipos2014Log-basedMaintenance}.
+\section{Future work}
 
-\subsection{The process}
-
-\subsection{Primary tools}
-
-
-\subsection{Challenges}
-
-\subsection{Recommendation}
-The earlier discussed challenges of predictive maintenance and the dependency on domain experts makes researching predictive maintenance time consuming. 
