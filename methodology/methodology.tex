@@ -2,12 +2,25 @@
 
 In this chapter, the dataset and methodology are described. Section \ref{methodology:dataset} examines the data. In section \ref{methodology:Text preprocessing} the steps of transforming the data is described. Lastly, section \ref{methodology:evaluation measures} describes our 4 evaluation measures to train and tune our model.
 
-\section{Dataset}\label{methodology:dataset}
-The dataset used in this research is provided by Capgemini containing syslogs from various servers. The syslogs contains event logs from different servers provided to their customers and internal staff. The event logs used on their servers were extracted from different operating systems, ranging from the year 2015 to current day. The size of one day of data can easily range into the 20 - 40 million event logs. Due to the size and complexity and computation time of the dataset, this research contains 1 day of data with the word error to ensure it's association with errors.
-The data will be referred as the corpus and the system logs as documents throughout this research. The corpus contains 426928 records and has messages consisting of small twitter like sizes. The documents has a few features like hostname, severity, port, priority, valid, protocol, body. The features contain little information and will not be used, only the body feature has been extracted which contains the textual message of the syslog.
+\section{Data collection}
+The original data is collected using the Hadoop framework tools named in section \ref{research:buildingblocks}. HDFS is storage system which collect the different servers logs from different type of servers. Apache zeppelin allows the unstructured data to be extracted and semi structured dataframes. Spark allows quick in memory computation to transform and slice the data. Which again allows us to transform the data to the more friendly pandas dataframes. The next step is to talk about our dataset.
 
-\section{Text preprocessing}\label{methodology:Text preprocessing}
-In this section we will talk about the input dataset, the reason why we selected it and how it got processed for our model. Preprocessing involves tokenization and stop word removal discussed in section \ref{methodology:tokenization} - \ref{methodology:bagow}. Preprocessing is important and if done wrong can impact the final results. This can be related to the garbage in, garbage out principle in computer science, where flawed input brings nonsense output. 
+\section{Dataset}\label{methodology:dataset}
+The dataset used in this research is provided by Capgemini containing syslogs from various servers. The syslogs contains server logs from different servers provided to their customers and internal staff. The event logs used on their servers were extracted from different operating systems, ranging from the year 2015 to current day. The size of one day of data can easily range into the 20 - 40 million server logs. Due to the size and complexity and computation time of the dataset, this research contains 1 day of data with the word error to ensure its association with errors.
+
+TODO!!
+The data will be referred as the corpus and the system logs as documents throughout this research. The corpus contains 426928 records and has messages consisting of small twitter like sizes. The documents has a few features like hostname, severity, port, priority, valid, protocol, body. The features contain little information and will not be used, only the body feature has been extracted which contains the textual message of the syslog. 
+
+\section{Data preprocessing}\label{methodology:Text preprocessing}
+In this section we will talk about the input dataset, the reason why we selected it and how it got processed for our model. Preprocessing involves tokenization and stop word removal discussed in section \ref{methodology:tokenization} - \ref{methodology:bagow}. Preprocessing is important can greatly influence the final results. This can be related to the garbage in, garbage out principle in computer science, where flawed input brings nonsense output. Following the same principles laid in the section \ref{research:featureextraction} and common sense we can recognise the 4 steps necessary. 
+
+The LDA model is defined in 3 steps and shown in Fig \ref{fig:LDA_example} :
+\begin{enumerate}
+    \item Tokenization
+    \item Normalization
+    \item Stop words
+    \item Bag of words
+    \end{enumerate}
 
 
 \begin{table}[h]
@@ -44,32 +57,25 @@ The text preprocessing in this research makes usage of the \textit{bag of words}
 An other notable representation is the \textit{term frequency inverse document matrix} (tf-idm) in topic modelling. Tf-idm increases the weight terms with less frequency have. This makes tf-idm more appealing when assuming infrequent terms are important. Because tf-idm already reduces the dimension of the terms, lda cannot use this matrix as input. 
 \end{comment}
 
+\section{Data exploration $&$ Visualisation}
+
 \subsection{Dimensionality reduction} \label{methodology:dimreduction}
 The reason LDA is widely applied for text clustering is because LDA actually reduces the dimension, reducing the computation time. Reducing the dimension with LDA allows the usage of Jensen-Shannon distance to measure text similarity, which we discuss in section \ref{research:jsdivergence}. The generated output is also suitable for clustering, but the output can also be interpreted as clusters.
 
-\begin{comment}
 
+\begin{comment}
 \section{Syslog}\label{methodology:syslog}
 Syslogs are textual messages \cite{Stearley2004TowardsSyslogs} which contain the messages provided by the systems.
-
-
 \section{Challenges}
-
 \subsection{Natural Language Processing}
-
-
 \subsection{Semantics}
-
-
 \subsection{Sentiment analysis}
-
-
 \subsection{Extract, Transform, Load}
-
 \end{comment}
 
+\subsection{Model Building}
 
-\section{Evaluation Measures}\label{methodology:evaluation measures}
+\section{Model evaluation}\label{methodology:evaluation measures}
 To evaluate our implementation we use different metrics. Evaluating an unsupervised learning model depends on the application and the goal the model is made with. In our case the metrics are here to evaluate the models capability to generalise, using perplexity. The clusters are evaluated based on their inner similarity between documents and \" distance \" compared to other cluster centroids, using Silhouette co\"efficient. The distance metric used for silhouette co\"efficient is based on the KL-divergence metric. The last measurement we use is coherence in topics and the measurement of distance between topic document clusters using the visual tool LDAvis.
 
 \subsection{Perplexity}\label{methodology:perplexity}
@@ -99,7 +105,7 @@ Where $s_i$ is the silhouette of sample $i$ in the cluster. $a_i$ is the average
 The value of $s$ will be contained between $-1$ and $1$. If $s(i) = 1$ then we can say that the distance $i$  is a lot less in its own cluster then the nearest other cluster. If we take $s(i) = -1$ then the similarity of $i$ is higher in the other nearest cluster then its current cluster \cite{Rousseeuw1987Silhouettes:Analysis}.
 
 
-\subsection{Jensen-Shannon divergence and KL-divergence} \label{research:jsdivergence}
+\subsection{Jensen-Shannon divergence and KL-divergence} \label{methodology:jsdivergence}
 The Kullback Leiber divergence was introduced to measure the density between to distributions \cite{Hershey2007ApproximatingModels}. Based upon this important and popular measure the Jensen-Shannon divergence (JS) was introduced \cite{Fuglede2004Jensen-ShannonEmbedding}. Which is better used to measure similarity between two text documents based on their probability distributions.
 
 \[
@@ -114,5 +120,5 @@ Although LDA can be used to find latent patterns, explore, tag recommend in a do
 With that in mind, the highly dimensional LDA is actually suitable in contrast to most machine learning techniques to be evaluated using visual tools. One such tool is LDAvis, a tool that got developed in R and D3 \cite{Sievert2014}. LDAvis is a web-based interactive visual of the topics on a fitted LDA model. The multidimensional LDA is scaled to two dimensions, making it possible to visually see the distance between topics and quickly determine their distinctiveness. Simultaneously the visual tool shows the relevance of each term in their selected topic, based on their exclusiveness and occurs within that topic compared to different topics.
 
 \subsection{Parameter tuning}\label{methodology:parameter tuning}
-During the experimental phase. The research coneducted sucked, but Althought it sucked we got somewhere. 
+During the experimental phase. The research conducted sucked, but althought it sucked we got somewhere. 
 The setup to train our model with our dataset is very important to describe the eventual model. In table \ref{tab:table2} the parameters are shown together with their setting. Much of these settings are explained in table \ref{tab:table1} and based on the settings discussed in the original paper of LDA \cite{Blei2003} and the online LDA paper \cite{Hoffman2010OnlineAllocation}. 
