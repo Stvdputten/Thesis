@@ -1,9 +1,10 @@
 \chapter{Conclusions} \label{ch:conclusions}
-
-\section{Research questions}
-
+This chapter concludes the conclusion in which we will shortly explain the research and derive a conclusion from our experiments in first section. We will answer the research questions and end the chapter with a section about future work. 
 
 \section{Conclusion}
+Making use of the models has shown to cluster new data very well using distance measures like jensen shannon divergence. Evaluating is still very difficult and making use of LDA can be. Due to the distinct nature of our documents and the small size of the documents, LDA would normally not be suitable for this task. Although we can say that it reasonably succeeded its task in clustering unseen new data. We recommend using more simpler techniques on data based on logs. 
+
+We had skewed data from the start, which makes unsupervised clustering with LDA actually less usefull. LDA has more power when used with more full documents, the short nature like tweets doesnt help the. We can't conclude even thought our models performed reasonably based on our own visual evaluation that LDA might be reliable for future use. We propose the usages with LDA with care when applying on small tekst in domain specific use like server logs. The variability of the server logs and our unlabeled nature makes it even harder for applying unsupervised clustering. Althought the premise was interesting. Much improvements can be made in each step based. We recommend a more streamlined pipeline for future use. 
 
 
 \section{Discussion}
@@ -26,5 +27,16 @@ Sadly enough, the syslogs were never labelled with their type. This seemed to be
 \subsubsection{Topic modelling}
 Going back and forth between different algorithms available, my supervisor finally hinted at Latent Dirichlet Allocation(LDA). Lots of research has been done with LDA. Having already been wasting enough time on searching, this research had to settle for a technique. LDA seemed like an applicable algorithm to this problem based on earlier research. Text mining on logs has been done before, although barely on unlabelled logs. Training LDA on unlabelled data was common, expect that a lot of data contained either longer documents or a less domain specific dataset. In further research I would not recommend LDA for domain specific log research and labelling, unless one has enough time and patience. 
 
-\section{Future work}
+\subsection{Recommendation}
+If one is to attempt LDA for further research on logs, be sure to know which results are wished for. Evaluating LDA without a proper desired result might leave general and high valued evaluation techniques useless. In the end human aspect is always involved with LDA.
 
+\section{Future work}
+This research leaves a lot of open areas to optimise or further research server logs in general. Experimenting on similar data can be achieved and as such a few points which come to mind when recommending future works are:
+
+\begin{enumerate}
+    \item The way documents and corpora are declared. Corpus in our research was 1 day of data on filtered data with the term 'error'. The documents could be an collection of specific server logs instead of 1 log being 1 document, this will increase the document size tremendously and should help LDA perform better.
+    \item The pipeline of data extraction. We filtered a lot of server specific features to extract our dataset, which can be a loss of information for LDA. 
+    \item Data preprocessing. The steps performed for the data preprocessing can each be 
+    \item Exhaustive search. Most parameters were based on best practices from earlier performed, especially by Blei from the original LDA paper. Hyperparameters and topic count can be changed and better set based on the distribution of your documents. This can be quite exhaustive and time consuming, but could be interesting.
+    \item The quantity of data. LDA is created to handle large amounts of documents, which we did have but not with the desired document length and variety. Using more varied logs, like informational logs etc could be show better latent topic inference. 
+\end{enumerate}

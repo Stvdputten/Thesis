@@ -3,7 +3,7 @@
 \section{General introduction}\label{introduction:Generalinformation}
 The computers that are used today have been generating data with an explosive rate in the last few years. The data is collected from different sources, transformed and aggregated to be put into a database or data warehouse. The data stays in these databases and has a huge probability to never be used and eventually to be lost. Although companies acknowledge the value of data, it is challenging to make use of said data and even more so to add value to their core business processes. A few challenges brought are due to the volume, velocity and variety of data, to name a few. The recent field of machine learning, or in a more general term data science, embraces data. The exploitation of data has improved the operation of many day to day applications in recent years. 
 
-\setlength{\parindent}{3ex} This thesis is formed with the data Capgemini provided. Capgemini is an international IT consultancy firm that offers its customers IT services. One of these services is the big data lake which allows enormous amounts of data to be stored for further use. This data lake is built with the open source Hadoop framework. Capgemini allowed us access to their big data lake containing millions of server logs of their customers and systems. The servers logs are used to find explanation for whenever server failure occurs. Manually inspecting server logs is time consuming and is costly as only domain experts understand the server logs. This brings us to the request of the company to help them get more use out of their data. 
+\setlength{\parindent}{3ex} This thesis is formed with the data Capgemini provided. Capgemini is an international IT consultancy firm that offers its customers IT services. One of these services is the big data lake which allows enormous amounts of data to be stored for further use. This data lake is built with the open source Hadoop framework. Capgemini allowed us access to their big data lake containing millions of server logs of their customers and systems. The server logs are used to find explanation for whenever server failure occurs. Manually inspecting server logs is time consuming and is costly as only domain experts understand the server logs. This brings us to the request of the company to help them get more use out of their data. 
 
 With enough creativity and time we would be able to use such a source of data to infinite use cases. Sadly, such extensive research is not possible. The research started with the analyses of the data and eventually led to applying topic modelling. Topic modelling is a form of unsupervised machine learning. Topic modelling can be described as the extraction of latent patterns (hidden topics) from data through semantic analysis. Readers who are further interested why topic modelling has been chosen, are encouraged to read section \ref{conclusion:discussion}. 
 
@@ -17,7 +17,7 @@ During the time spent on this research challenges were met and identified for re
 \end{comment}
  
 \section{Problem statement}\label{introduction:Motivation}
-Using the data to extract value is too general and that is why we need to specify the exact motivation and goals of this thesis. The general steps of research are exploration of the data, to see what machine learning tool is applicable and to apply and optimise the model generated. The server logs generally consist of textual messages. The messages describe the servers and range from simple informational messages to severe warning messages where user intervention is necessary. The only problem with the data is that it does not make a distinction between the types of messages. The domain expert might know which messages to search for when the servers fail, but with millions of logs the domain expert cannot be aware of all the necessary logs. Especially when the logs contains no label to indicate their type. This is one of the reasons why we propose topic modelling. Topic modelling serves as a statistical technique mostly used to reduce the dimensions of data, but can also be used to cluster similar messages.
+Using the data to extract value is too general for a problem statement and that is why we need to specify the exact motivation and goals of this thesis. The only premise is the application of machine learning on the data. The general steps of research are exploration of the data, to see what machine learning tool is applicable and to apply and optimise the model generated (if possible). The server logs generally consist of textual messages. The messages describe the servers and range from simple informational messages to severe warning messages where user intervention is necessary. The only problem with the data is that it does not make a distinction between the types of messages. The domain expert might know which messages to search for when the servers fail, but with millions of logs the domain expert cannot be aware of all the necessary logs. Especially when the logs contains no label to indicate their type. This is one of the reasons why we propose topic modelling. Topic modelling serves as a statistical technique mostly used to reduce the dimensions of data, but can also be used to cluster similar messages.
 
 \begin{comment}
 
@@ -25,21 +25,21 @@ Topic modelling is a hot topic in data science. System logs are used as source f
 
 \end{comment}
 
+
 \section{Research question}\label{introduction:Researchquestion}
-TODO !!! (verbeteren)
+The main goal of this research is to apply topic modelling to cluster these messages in distinct groups, we comparing these models and evaluating which model is most suitable.
 
-We propose the following research question:
+\noindent We propose the following research question: 
+\begin{itemize}
+    \item \textbf{\textit{Can we use topic modelling to classify and cluster error messages?}}
+\end{itemize}
 
-\parindent \textit{Can we use topic modelling to classify and cluster error messages?}
-
-The following subquestions are:
-
-Why is the chosen topic model suitable for this type of data?
-
-How do the parameters influence the models performance?
-
-What are our findings when using topic modelling?
-
+\noindent To help us answer this questions we will distinguish the research in three subquestions:
+\begin{itemize}
+    \item Why is the chosen topic model suitable?
+    \item How do the parameters influence the topic models?
+    \item What are our findings when applying topic modelling and optimise the model on our data?
+\end{itemize}
 
 \begin{comment}
 What are the optimal parameters?
@@ -104,11 +104,11 @@ natural language processing, feature extraction, types of system logs, the appli
 
 \textbf{Chapter \ref{ch:methodology}}: This chapter described the process of the data and the steps that are taken to prepare the data. The second section is about the 4 evaluation metrics for the model.
 
-\textbf{Chapter \ref{ch:result}}: This chapter shows the results from the application of the LDA model on the data set. The performance of our model based on the 4 metrics, which measure the quality of the topic model showing different scores depending on the given parameters.
+\textbf{Chapter \ref{ch:results}}: This chapter shows the results from the application of the LDA model on the data set. The performance of our model based on the 4 metrics, which measure the quality of the topic model showing different scores depending on the given parameters.
 
 \textbf{Chapter \ref{ch:conclusions}}: The conclusion based on the found results. The possible future work, discussion and our final recommendation and thoughts about this research.
 
-\textbf{Chapter \ref{ch:appendices}}: The appendix contains examples and figures of the data Capgemini provided and the data that has been preprocessed.
+\textbf{Chapter \ref{ch:appendices}}: The appendix contains examples and figures of the data Capgemini provided and the data that has been preprocessed. The pyLDAvis figures generated of our models. The topics infered for different topic counts. Lastly the documents distribution of each topic in each of our models.
 
 \begin{comment}
 It is recommended to end the introduction with an overview of the thesis. This chapter contains the introduction; Chapter~\ref{ch:definitions} includes the definitions; Chapter~\ref{ch:relatedwork} discusses related work; Chapter~\ref{ch:evaluation} evaluates the contributions; Chapter~\ref{ch:conclusions} concludes.

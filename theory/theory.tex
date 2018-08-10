@@ -1,6 +1,6 @@
 \chapter{Theoretical Background}  \label{ch:theory}
 
-In this chapter we explain the necessary background of our research. First, in section \ref{theory:machinelearning} we describe the general term of machine learning. This brings section \ref{theory:tm} with general explanation of topic modelling. The last section \ref{theory:lda} describes the complex algorithm of Latent Dirichlet Allocation.
+In this chapter we explain the necessary background of our research. First, in section \ref{theory:machinelearning} we describe the general term of machine learning. This brings section \ref{theory:tm} with general explanation of topic modelling. The last section \ref{theory:lda} describes Latent Dirichlet Allocation.
 
 \section{Machine learning} \label{theory:machinelearning}
 The idea of self learning computers has been conceived multiple decades ago, but has only recently been greatly applied in our society.
@@ -11,7 +11,7 @@ In the field of computer science, machine learning is defined as follows \cite{S
 \\\textit{Machine learning gives computers the ability to learn without being explicitly programmed.}
 \end{definition}
 
-Machine learning exploits the abundance of data which it applies to learn in one of the following three ways:
+\noindent Machine learning exploits the abundance of data which it applies to learn in one of the following three ways:
 
 \begin{enumerate}
     \item Supervised learning
@@ -19,7 +19,7 @@ Machine learning exploits the abundance of data which it applies to learn in one
     \item Semi-supervised learning (or reinforcement learning)
 \end{enumerate}
 
-The distinction between the learning methods depends on the data. Either data is labelled or unlabelled data, e.g. pictures of named butterflies or unnamed butterflies. Supervised learning makes it easy to train and evaluate the model using labelled data. Unsupervised learning makes use of the patterns found in the unlabelled data. Reinforcement learning uses a mixture of labelled and unlabelled data to train itself. 
+The distinction between the learning methods depends on the data. Either data is labelled or unlabelled data, e.g. pictures of named butterflies or unnamed butterflies. Supervised learning makes it easy to train and evaluate the model using labelled data. Unsupervised learning makes use of the (latent) patterns found in the unlabelled data. Reinforcement learning uses a mixture of labelled and unlabelled data to train itself. 
 
 \subsection{Hard and Soft clustering}
 Machine learning divides data into clusters, either hard clusters or soft clusters. The results discussed in chapter \ref{ch:result} contain results based both upon hard and soft clustering. Clustering data can be achieved by giving every element of the data at most one label, this is called hard clustering. Soft clustering allows data to be part of multiple clusters or contain multiple labels. Especially when talking about topic modelling, the distinction between hard and soft clustering can be vague. In topic modelling every document is a mixture of multiple topics; this by itself is already a form of soft clustering. In section \ref{theory:lda} we further discuss the meaning of clustering in our model.
