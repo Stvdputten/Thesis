@@ -1,11 +1,32 @@
 \chapter{Conclusions} \label{ch:conclusions}
-This chapter concludes the conclusion in which we will shortly explain the research and derive a conclusion from our experiments in first section. We will answer the research questions and end the chapter with a section about future work. 
+This chapter contains the conclusion in which we will shortly explain the research and derive a conclusion from our experiments in first section. We will answer the research questions and end the chapter with a section about future work. 
 
 \section{Conclusion}
-Making use of the models has shown to cluster new data very well using distance measures like jensen shannon divergence. Evaluating is still very difficult and making use of LDA can be. Due to the distinct nature of our documents and the small size of the documents, LDA would normally not be suitable for this task. Although we can say that it reasonably succeeded its task in clustering unseen new data. We recommend using more simpler techniques on data based on logs. 
+This research has been made with the help of server data of Capgemini. Capgemini provided data of their server datawarehouse for this research. Afterwards we extracted an interesting subset, error data, of data contained in the server logs. Based on earlier research we use the unsupervised machine learning model Latent Dirichlet Allocation(LDA) to discover latent topics in this data set. As such we recognize our dataset as a corpus and the server logs as the documents in this corpus. To achieve this transformation of data to corpus we used some steps.
+We preprocessed the data using the standard steps: normalization, stop word removal, tokenization and creating a bag of words matrix (bow). The bow was divided in a train, test and validation set. Furthermore we trained multiple models with different amounts of topics {2-38} with our train and test set. Lastly we evaluate the results of each model using multiple metrics. We evaluate distinctiveness, coherence of each topic using pyLDAvis and the coherence metric Cv. We further use human perception to evaluate the topics with their top terms. The documents are clustered based on their highest probable topic and as such we compare the document distribution based on hard clustering. Finally we use the silhouette coefficient to compare the multiple topics. 
+
+We will answer each research question and end with answering our main research question based on the results.
+\begin{itemize}
+    \item How do the topic count influence the topic models?
+    THe results show different and even contrasting results. We could say with pyLDAvis that the topics have more overlap as topics increase. Coherence stays reasonably the same on lower topic counts. However we noticed a lot of similar top terms in topics in general, increasing overlap of terms as topics increased. The correlation between topic count and topic models show different results for each metric and is inconclusive.
+    \item Why is the chosen topic model suitable?
+    The optimal topic count is based on the necessary generalisation of the topics to cluster similar documents together. If we were to take coherence as our measure, 11 would be the optimal topic count. However the silhouette value contradicts this value and says everything below 10 topics would be optimal.
+    Rather then choosing a single optimal model we recommend using a low amount of topics between 3 and 10 topics based on the pyLDAvis data and coherence score.
+    \item What are our findings when applying topic modelling and optimising the model on our data?
+    Evaluation is really hard on topic modelling. Especially when the data is domain specific. Server data is not the same as natural language and using topic models will not result in clear topics from each models. However the semantic relation LDA discovers is clusters similar documents, based on hte silhouette values, which would not be easy as human.
+\end{itemize}
+
+Leaving us with the research question.
+\begin{itemize}
+    \item \textbf{\textit{Can we use topic modelling to classify and cluster error messages?}}
+\end{itemize}
+Based on the results we got with the silhouette values, a low topic counts would be optimal for our model. Furthermore when reviewing the document distribution for topics we see some dominant topics where most of our documents go to. This says more about our data being skewed to certain error messages, which makes it even harder to detect smaller latent topics, which could be more relevant for server logs. The interpretability of topics also leaves much to be desired. When applying the LDA model on similar server logs we recommend having a domain specific expert which might result in better topic evaluation. With the measures we used to evaluate our models, we would not recommend using LDA for classifying and clustering error messages.
+
+\begin{comment}
+Making use of the models has shown to cluster new data very well using distance measures like jensen shannon divergence. E We recommend using more simpler techniques on data based on logs. 
 
 We had skewed data from the start, which makes unsupervised clustering with LDA actually less usefull. LDA has more power when used with more full documents, the short nature like tweets doesnt help the. We can't conclude even thought our models performed reasonably based on our own visual evaluation that LDA might be reliable for future use. We propose the usages with LDA with care when applying on small tekst in domain specific use like server logs. The variability of the server logs and our unlabeled nature makes it even harder for applying unsupervised clustering. Althought the premise was interesting. Much improvements can be made in each step based. We recommend a more streamlined pipeline for future use. 
-
+\end{comment}
 
 \section{Discussion}
 
