@@ -23,8 +23,7 @@ After manually inspecting the data we extracted only 4 columns named: hostname, 
 
 \FloatBarrier
 
-\section{Pyldavis}\label{appendices:pyldavis}
-The remaining Ldavis visualisation.
+\section{pyLDAvis}\label{appendices:pyldavis}
 
  \begin{figure}[!h]
     \centering
@@ -32,7 +31,6 @@ The remaining Ldavis visualisation.
     \caption{PyLdavis topic visualisation with 2 topics}
     \label{fig:pyldavis_2}
 \end{figure}
-
 
  \begin{figure}[!h]
     \centering
@@ -51,7 +49,7 @@ The remaining Ldavis visualisation.
   \begin{figure}[!h]
     \centering
     \includegraphics[width=15cm, height=8cm,trim=0 0 100px 0, clip=true]{figures/pyldavis/pyldavis_5.png}
-    \caption{PyLdavis topic visualisation with 4 topics}
+    \caption{PyLdavis topic visualisation with 5 topics}
     \label{fig:appendices:pyldavis_5}
 \end{figure}
  
@@ -202,8 +200,6 @@ The remaining Ldavis visualisation.
     \label{fig:pyldavis_38}
 \end{figure}
 
-
-
 \FloatBarrier
 \section{Document distributions per amount of topics}\label{appendices:documentdistribution}
 
@@ -212,21 +208,21 @@ The remaining Ldavis visualisation.
     \centering
     \includegraphics[width=15cm, height=8cm]{figures/doc_distr/doc_distribution_12-16.png}
     \caption{Document distribution with 12-16 topics}
-    \label{fig:Doc_distr_12-16}
+    \label{fig:Doc_distr_12-16corpus}
 \end{figure}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=15cm, height=8cm]{figures/doc_distr/doc_distribution_17-23.png}
     \caption{Document distribution with 17-23 topics}
-    \label{fig:Doc_distr_17-21}
+    \label{fig:Doc_distr_17-21corpus}
 \end{figure}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=15cm, height=8cm]{figures/doc_distr/doc_distribution_26-38.png}
     \caption{Document distribution with 26-38 topics}
-    \label{fig:Doc_distr_26-38}
+    \label{fig:Doc_distr_26-38corpus}
 \end{figure}
 
 \FloatBarrier
@@ -236,27 +232,41 @@ The remaining Ldavis visualisation.
     \centering
     \includegraphics[width=15cm, height=8cm]{figures/doc_distr/doc_distribution_12-16_corpus.png}
     \caption{Document distribution with 12-16 topics}
-    \label{fig:Doc_distr_12-16}
+    \label{fig:Doc_distr_12-16heldout}
 \end{figure}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=15cm, height=8cm]{figures/doc_distr/doc_distribution_17-23_corpus.png}
     \caption{Document distribution with 17-23 topics}
-    \label{fig:Doc_distr_17-21}
+    \label{fig:Doc_distr_17-21heldout}
 \end{figure}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=15cm, height=8cm]{figures/doc_distr/doc_distribution_26-38_corpus.png}
     \caption{Document distribution with 26-38 topics}
-    \label{fig:Doc_distr_26-38}
+    \label{fig:Doc_distr_26-38heldout}
 \end{figure}
 
-
-
 \FloatBarrier
-\section{Model generated topics}\label{appendices:modelgeneratedtopics}
+\section{Model topic overview}\label{appendices:modelgeneratedtopics}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|}
+ \hline
+ Topic & Terms & & & & \\
+ \hline
+ \hline
+ 0 & user & information & retrieving & ta & select\\ 
+ \hline 
+ 1 & failed & code & request & restclient & ping\\ 
+ \hline 
+\end{tabular}
+\caption{Topic 1..2 with top 5 terms}
+\label{tab:appendix2topicsmodel}
+\end{table}
 
 \begin{table}[!htb]
 \centering
@@ -294,6 +304,27 @@ The remaining Ldavis visualisation.
 \label{tab:4topicsmodel}
 \end{table}
  
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|}
+ \hline
+ Topic & Terms & & & & \\
+ \hline
+ \hline
+ 0 & ta & select & f & group & plan\\ 
+ \hline 
+ 1 & fluid\_dashboard & text & tblasset\_ser & tbljob\_sow & group\\ 
+ \hline 
+ 2 & v & r & order & null & tb\\ 
+ \hline 
+ 3 & failed & code & request & source & restclient\\ 
+ \hline 
+ 4 & user & information & retrieving & log & party\\ 
+ \hline 
+\end{tabular}
+\caption{Topic 1..5 with top 5 terms}
+\label{tab:appendix5topicsmodel}
+\end{table}
  
 \begin{table}[!htb]
 \centering
@@ -399,6 +430,37 @@ The remaining Ldavis visualisation.
 \label{tab:9topicsmodel}
 \end{table}
  
+ \begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|}
+ \hline
+ Topic & Terms & & & & \\
+ \hline
+ \hline
+ 0 & request & migrate & restclient & url & ping\\ 
+ \hline 
+ 1 & fluid\_dashboard & text & tblasset\_ser & tbljob\_sow & coord\_type\\ 
+ \hline 
+ 2 & ordcateg & cancel & token & postgres & \_bic\_zpmrsord\\ 
+ \hline 
+ 3 & orderitem & redo & record & unit\_day & length\\ 
+ \hline 
+ 4 & f & foo & count & ta & v\\ 
+ \hline 
+ 5 & ops & hawqstatus & down\_indic & set & \_bic\_zlongit\\ 
+ \hline 
+ 6 & request & ping & migrate & url & http\\ 
+ \hline 
+ 7 & failed & material & recordmode & notificatn & group\\ 
+ \hline 
+ 8 & ta & select & group & plan & dispatch\\ 
+ \hline 
+ 9 & user & information & retrieving & tblasset\_ser & tbljob\_sow\\ 
+ \hline 
+\end{tabular}
+\caption{Topic 1..10 with top 5 terms}
+\label{tab:appendix10topicsmodel}
+\end{table}
  
 \begin{table}[!htb]
 \centering
