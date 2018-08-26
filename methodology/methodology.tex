@@ -1,15 +1,15 @@
 \chapter{Methodology}  \label{ch:methodology}
 
-In this chapter, the dataset and methodology are described. Section \ref{methodology:dataset} examines the raw data. In section \ref{methodology:Text preprocessing} the steps of transforming the data is described. Section \ref{methodology:explo&visu} is a brief look at the data. Lastly, section \ref{methodology:evaluation measures} describes our measures to evaluate our models.
+In this chapter, the dataset and methodology are described. Section \ref{methodology:dataset} examines the raw data. In Section \ref{methodology:Text preprocessing} the steps of transforming the data is described. Section \ref{methodology:explo&visu} is a brief look at the data. Lastly, Section \ref{methodology:evaluation measures} describes our measures to evaluate our models.
 
 \section{Data collection}
-The original data is collected using the Hadoop framework tools named in section \ref{research:buildingblocks}. HDFS is a storage system which collects the different servers logs from different type of servers. With the help of the available tools we extract the unstructured data and use the existing library to structurize the data. PySpark allows quick in memory computation to transform and slice the data further. Which eventually allows us to transform the data to the more friendly pandas dataframe and make local computations possible.  
+The original data is collected using the Hadoop framework tools named in Section \ref{research:buildingblocks}. HDFS is a storage system which collects the different servers logs from different type of servers. With the help of the available tools we extract the unstructured data and use the existing library to structure the data. PySpark allows quick in memory computation to transform and slice the data further. Which eventually allows us to transform the data to the friendlier pandas dataframe and make local computations possible.  
  
 \section{Dataset}\label{methodology:dataset}
-The dataset used in this research is provided by Capgemini containing syslogs from various servers, see Appendix \ref{appendices:serverdata}. The syslogs contains server logs from different servers provided to their customers and internal staff. The event logs used on their servers were extracted from different operating systems, ranging from the year 2015 to current day. The size of one day of data can easily range into the 20 - 40 million server logs. Due to the size and complexity and computation time of the dataset and the focus on discovering patterns in error logs in the unlabeled data, we extracted the data that contained the word "error". 
+The dataset used in this research is provided by Capgemini containing syslogs from various servers, see Appendix A \ref{appendices:serverdata}. The syslogs contains server logs from different servers provided to their customers and internal staff. The event logs used on their servers were extracted from different operating systems, ranging from the year 2015 to current day. The size of one day of data can easily range into the 20 - 40 million server logs. Due to the size and complexity and computation time of the dataset and the focus on discovering patterns in error logs in the unlabelled data, we extracted the data that contained the word "error". 
 
-The filtered dataset has been transformed to a more suitable pandas dataframe in table \ref{tab:tableerror}. The column syslog.body contains textual messages displaying the messages from the server. Manual inspection has shown that the contextual data sent by the server is displayed after the square bracket. We simply filtered the data away before the square bracket using regulare expressions as this contains low to non-existent value for our research. 
-With that said the example below in table \ref{tab:tablemessage} will be left with: \textit{RestClient: HTTP request for url /migrate/ping failed with error code 12029 (source: 5).} 
+The filtered dataset has been transformed to a more suitable pandas dataframe in Table \ref{tab:tableerror}. The column syslog.body contains textual messages displaying the messages from the server. Manual inspection has shown that the contextual data sent by the server is displayed after the square bracket. We simply filtered the data away before the square bracket using regular expressions as this contains low to non-existent value for our research. 
+With that said the example below in Table \ref{tab:tablemessage} will be left with: \textit{RestClient: HTTP request for url /migrate/ping failed with error code 12029 (source: 5).} 
 
 \begin{table}[h]
 \centering
@@ -56,7 +56,7 @@ Now that essential part has been extracted from our data, we discard the remaind
 
 
 \section{Data preprocessing}\label{methodology:Text preprocessing}
-Our goal now is to prepare the data such that our model can accept the data. The data needs to be converted to the Bag of Words representation. Preprocessing involves normalization, tokenization and stop word removal discussed in section \ref{methodology:normalization} - \ref{methodology:bagow}. Preprocessing is important and can greatly influence the final results. This can be related to the garbage in, garbage out principle in computer science, where flawed input brings nonsense output. Following the same principles laid in the section \ref{research:featureextraction} we will walk through every step. This said, we can only use the data contained in the dataset with feature 'syslog.body'. This feature contains the messages. 
+Our goal now is to prepare the data such that our model can accept the data. The data needs to be converted to the Bag of Words representation. Preprocessing involves normalization, tokenization and stop word removal discussed in Section \ref{methodology:normalization} - \ref{methodology:bagow}. Preprocessing is important and can greatly influence the final results. This can be related to the garbage in, garbage out principle in computer science, where flawed input brings nonsense output. Following the same principles laid in the Section \ref{research:featureextraction} we will walk through every step. This said, we can only use the data contained in the dataset with feature 'syslog.body'. This feature contains the messages. 
 
 The preprocessing of our data is defined in 4 steps:
 \begin{enumerate}
@@ -66,7 +66,7 @@ The preprocessing of our data is defined in 4 steps:
     \item Bag of Words
 \end{enumerate}
 
-Before such steps are taken we have an overview of our current dataset and complete dataset mentioned in table \ref{tab:tablestatistics}. The corpus contains 426905 records and has messages consisting of small twitter like sizes. The complete dataset has documents which contain a few columns like hostname, severity, port, priority, valid, protocol, body. The features contain little information and will not be used, only the body feature has been extracted which contains the textual message of the syslog. Furthermore we assume that our syslogs are normal textual messages and our Bag of Words matrix will only contain 1-gram words, unless we state otherwise.  
+Before such steps are taken we have an overview of our current dataset and complete dataset mentioned in Table \ref{tab:tablestatistics}. The corpus contains 426905 records and has messages consisting of small twitter like sizes. The complete dataset has documents which contain a few columns like hostname, severity, port, priority, valid, protocol, body. The features contain little information and will not be used, only the body feature has been extracted which contains the textual message of the syslog. Furthermore, we assume that our syslogs are normal textual messages and our Bag of Words matrix will only contain 1-gram words, unless we state otherwise.  
 The data will be referred as the corpus and the syslogs as documents in the remaining paper. 
 
 
@@ -85,21 +85,21 @@ The data will be referred as the corpus and the syslogs as documents in the rema
 \end{table}
 
 \subsection{Normalization}\label{methodology:normalization}
-In the text mining world we define normalization as follows: \\
+In the text mining world, we define normalization as follows: \\
 
 \theoremstyle{definition} 
 \begin{definition}{Normalization} 
-\\\textit{Text normalization is the process of transforming text into a single canonical form that it might not have had before.}
+\\\textit{Text normalization is the process of transforming text into a single canonical form that it might not have had before \cite{Textnorm}.}
 \end{definition}
 
-Normalization in normal documents is simply done by removing the punctuation marks and the lowercase of each word. The nature of our server logs does not allow that. The message concealed in table \ref{tab:tablemessage} has an error code and extra information between the parenthesis's. We choose to keep the additional information closed between the parenthesis's, using python to write a custom function. The next steps are removing the digits and remaining punctual marks, lowercase every word and remove the remaining unnecessary whitespace. 
+Normalization in normal documents is simply done by removing the punctuation marks and the lowercase of each word. The nature of our server logs does not allow that. The message concealed in Table \ref{tab:tablemessage} has an error code and extra information between the parenthesis's. We choose to keep the additional information closed between the parenthesis's, using python to write a custom function. The next steps are removing the digits and remaining punctual marks, lowercase every word and remove the remaining unnecessary whitespace. 
 
 \subsection{Stop word}\label{methodology:stop_words}
 The second step for our preprocessing is removing Stop Words. Once again Stop Words are:
 
 \theoremstyle{definition} 
 \begin{definition}{Stop Words} 
-\\\textit{Stop Words are words which are filtered out before or after processing of natural language data.}
+\\\textit{Stop Words are words which are filtered out before or after processing of natural language data \cite{Anand2011}.}
 \end{definition}
 
 LDA assumes that each word is equally important. We assume that each word is not equally important which is why we remove the unimportant words, called stop words. Words such as 'the', 'a' and 'an' are not important, generic English words can be removed to only keep the most distinguishable words left. 
@@ -163,7 +163,7 @@ As each document is a form of error we can see that the most common terms in Fig
 \end{comment}
 
 
-\subsection{Splitting the data in Train Test and Held out} \label{methodology:dimreduction}
+\subsection{Splitting the data in Train Test and Held out} \label{methodology:traintestheldout}
 The data is shuffled using sklearns build in shuffle. WE use 90\% of the data for out train and test data and the remaining 10\% for held out data. The size our train test is 384215 documents and held out is 42690 documents.
 
 \subsection{Dimensionality reduction} \label{methodology:dimreduction}
@@ -181,7 +181,7 @@ Syslogs are textual messages \cite{Stearley2004TowardsSyslogs} which contain the
 \end{comment}
 
 \subsection{Model Building} \label{methodology:model_building}
-Building further on the research done on LDA, the before mentioned research in chapter \ref{ch:research} and more recent research with online LDA. Table \ref{tab:tableparset} displays the parameters set to test our model. The named parameters are explained in more detail on the gensim webpage \ref{research:buildingblocks}. 
+Building further on the research done on LDA, the before mentioned research in Chapter \ref{ch:research} and more recent research with online LDA. Table \ref{tab:tableparset} displays the parameters set to test our model. The named parameters are explained in more detail on the gensim webpage in Section \ref{research:buildingblocks}. 
 
 \begin{table}[h]
 \centering
@@ -252,9 +252,9 @@ Where $P$ and $Q$ denote a probability distribution and $M$ the set of probabili
 \subsection{Human perception}\label{methodology:humanperception}
 Although LDA can be used to find latent patterns, explore, tag recommend in a document corpus the final result of topics do not necessarily match up with the human expectation of a topic. Especially in an unsupervised learning model with only mathematical measures\cite{Towne2016MeasuringPerception}. The reason of this paragraph is to make readers aware that the suitability of a model in an unsupervised learning and NLP environment still need support of a human factor. Research from Chang  et al. \cite{Chang2009} and Blei et al. \cite{Chaney2012VisualizingModels.} provide more in depth research in this topic.  
 
-With that in mind, the highly dimensional LDA is actually suitable in contrast to most machine learning algorithms to be evaluated using visual tools. One such tool is LDAvis, a tool that got developed in R and D3 \cite{Sievert2014}. LDAvis is a web-based interactive visual of the topics on a fitted LDA model. The multidimensional LDA is scaled to two dimensions, making it possible to visually see the distance between topics and quickly determine their distinctiveness. Simultaneously the visual tool shows the relevance of each term in their selected topic, based on their exclusiveness and occurs within that topic compared to different topics. The implementation that we use is created with python and is named pyLDAvis, see \ref{research:buildingblocks}. 
+With that in mind, the highly dimensional LDA is actually suitable in contrast to most machine learning algorithms to be evaluated using visual tools. One such tool is LDAvis, a tool that got developed in R and D3 \cite{Sievert2014}. LDAvis is a web-based interactive visual of the topics on a fitted LDA model. The multidimensional LDA is scaled to two dimensions, making it possible to visually see the distance between topics and quickly determine their distinctiveness. Simultaneously the visual tool shows the relevance of each term in their selected topic, based on their exclusiveness and occurs within that topic compared to different topics. The implementation that we use is created with python and is named pyLDAvis, see Section \ref{research:buildingblocks}. 
 
 \begin{comment}
     \subsection{Parameter tuning}\label{methodology:parameter tuning}
 \end{comment}
-The evaluation metrics will be applied on the models. Based on the exploration of the data we will also choose the optimal number of topics. In following chapter \ref{ch:results} the results are shown. 
+The evaluation metrics will be applied on the models. Based on the exploration of the data we will also choose the optimal number of topics. In the following Chapter \ref{ch:results} the results are shown. 

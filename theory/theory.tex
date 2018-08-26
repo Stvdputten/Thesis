@@ -1,9 +1,9 @@
 \chapter{Theoretical Background}  \label{ch:theory}
 
-In this chapter we explain the necessary background of our research. First, in section \ref{theory:machinelearning} we describe the general term of machine learning. This brings section \ref{theory:tm} with general explanation of topic modelling. The last section \ref{theory:lda} describes Latent Dirichlet Allocation.
+In this chapter we explain the necessary background of our research. First, in Section \ref{theory:machinelearning} we describe the general term of machine learning. This brings Section \ref{theory:tm} with general explanation of topic modelling. The last Section \ref{theory:lda} describes Latent Dirichlet allocation.
 
 \section{Machine learning} \label{theory:machinelearning}
-The idea of self learning computers has been conceived multiple decades ago, but has only recently been greatly applied in our society.
+The idea of self-learning computers has been conceived multiple decades ago, but has only recently been greatly applied in our society.
 In the field of computer science, machine learning is defined as follows \cite{Samuel1959SomeCheckers}:\\
 
 \theoremstyle{definition} 
@@ -22,7 +22,7 @@ In the field of computer science, machine learning is defined as follows \cite{S
 The distinction between the learning methods depends on the data. Either data is labelled or unlabelled data, e.g. pictures of named butterflies or unnamed butterflies. Supervised learning makes it easy to train and evaluate the model using labelled data. Unsupervised learning makes use of the (latent) patterns found in the unlabelled data. Reinforcement learning uses a mixture of labelled and unlabelled data to train itself. 
 
 \subsection{Hard and Soft clustering}
-Machine learning divides data into clusters, either hard clusters or soft clusters. The results discussed in chapter \ref{ch:results} contain results based both upon hard and soft clustering. Clustering data can be achieved by giving every element of the data at most one label, this is called hard clustering. Soft clustering allows data to be part of multiple clusters or contain multiple labels. Especially when talking about topic modelling, the distinction between hard and soft clustering can be vague. In topic modelling we assume every document is a mixture of multiple topics; this by itself is already a form of soft clustering. In section \ref{theory:lda} we further discuss the meaning of clustering in our model.
+Machine learning divides data into clusters, either hard clusters or soft clusters. The results discussed in Chapter \ref{ch:results} contain results based both upon hard and soft clustering. Clustering data can be achieved by giving every element of the data at most one label, this is called hard clustering. Soft clustering allows data to be part of multiple clusters or contain multiple labels. Especially when talking about topic modelling, the distinction between hard and soft clustering can be vague. In topic modelling we assume every document is a mixture of multiple topics; this by itself is already a form of soft clustering. In Section \ref{theory:lda} we further discuss the meaning of clustering in our model.
 
 \section{Topic Modelling}\label{theory:tm}
 Topic models are models used to find latent topics in mostly large unstructured collections of documents. Topic modelling assumes that documents are a mixture of topics, while topics are a distribution of words \cite{Blei2010}. Whereas humans have a hard time to find a structure, topic modelling uses statistical methods for analysing words for topic discovery. This makes it possible to compare topics with each other and to find similar documents without necessarily having any prior knowledge of the collection of documents. The application of topic modelling is wide and is very powerful, making it a very popular method for the exploration of data. 
@@ -40,9 +40,9 @@ Topic models are models used to find latent topics in mostly large unstructured 
  $N$ & Number of words in the document \\
  $N_{d=1..M}$ & Number of words in document d\\
  $\alpha$ & Collection of all $\alpha$ = $ \{ \alpha_{1},\alpha_{2}, ... , \alpha_{K}\}$ \\
- $\alpha_{k=1...K}$ & Hyperparameter for dirichlet prior distribution of topic $k$ \\
+ $\alpha_{k=1...K}$ & Hyperparameter for Dirichlet prior distribution of topic $k$ \\
  $\beta$ &  Collection of all $\beta$ = $\{\beta{1},\beta{2}, ... , \beta_{K}\}$ \\
- $\beta_{w=1...V}$ & Hyperparameter for dirichlet prior distribution of a word $w$ in a topic \\
+ $\beta_{w=1...V}$ & Hyperparameter for Dirichlet prior distribution of a word $w$ in a topic \\
  $\varphi_{k=1...K}$ & Distribution of words in topic $k$ \\
  $\varphi_{k=1...K, w=1...V}$ & Weight of  word $w$ in topic $k$  \\
  $\theta{d=1...M}$ & Distribution of topics in document $d$  \\
@@ -61,7 +61,7 @@ Topic models are models used to find latent topics in mostly large unstructured 
 The machine learning and text mining areas have focused a lot on probabilistic topic models in recent years. Models like probabilistic latent semantic analysis (PLSA) and sentiment analysis are used for applications ranging from document clustering, topic modelling and retrieval systems \cite{Lu2011InvestigatingLDA}. Optimising models is also a challenging task, current models may make usage of a high range from statistical inference e.g. variational, stochastic variational and Markov chain Monte Carlo \cite{Hoffman2016MarkovModels}. The model that is used in this research and build upon the before mentioned models will be discussed in great length below.
 
 \section{Latent Dirichlet allocation}\label{theory:lda}
-In natural language processing, \textit{Latent dirichlet allocation} (LDA) is an unsupervised machine learning technique introduced in 2003 for Topic modelling \cite{Blei2003}.
+In natural language processing, \textit{Latent Dirichlet allocation} (LDA) is an unsupervised machine learning technique introduced in 2003 for Topic modelling \cite{Blei2003}.
 The notation used for LDA can be seen in Table \ref{tab:table1}. LDA is part of a larger field called probabilistic topic modelling \cite{Blei2010}.
 
 LDA makes use of a generative probabilistic model of a collection of documents \textbf{M} (corpus) to discover latent topics. Fig \ref{fig:LDA} represents the plate notation of LDA. For a more understandable model consider Fig \ref{fig:LDA_example}. The model assumes that each document \textbf{N} in the corpus consists of a mixture of latent topics. These topics are a mixture of words \textbf{W} assigned to a topic from a fixed vocabulary \textbf{V}. \textbf{Z} notates the assignment of specific words to topics. The distribution of words $\theta$ (theta) for each topic is dependent on the sensitivity of $\alpha$ (alpha). The probability distribution of topics in documents $\varphi$ (phi) are dependent on the sensitivity of $\beta$ (beta). The number of topics \textbf{K} are predefined by the user. 
@@ -69,11 +69,11 @@ LDA makes use of a generative probabilistic model of a collection of documents \
 \begin{figure}
     \centering
     \includegraphics[width=10cm, height=5cm]{methodology/Smoothed_LDA.png}
-    \caption{The smoothed LDA plate notation}
+    \caption{The smoothed LDA plate notation \cite{Blei2003}}
     \label{fig:LDA}
 \end{figure}
 
-The LDA model is defined in 3 steps and shown in Fig \ref{fig:LDA_example} :
+The LDA model is defined in 3 steps and shown in Fig \ref{fig:LDA_example} \cite{Blei2003}:
 \begin{enumerate}
     \item For each document, pick a topic from its assigned distribution over topics.
     \item Sample a word from the distribution over the words associated with the chosen topic. 
@@ -81,24 +81,24 @@ The LDA model is defined in 3 steps and shown in Fig \ref{fig:LDA_example} :
 \end{enumerate}
 
 Let us once again look at the mentioned Fig \ref{fig:LDA_example}. The topics are shown on the left side with their probability of words. On the right side, the document has a topic proportion. Every word gets assigned to a topic so that the topic proportion matches.  
-In the original LDA model, assignments of words get updated every iteration through the corpus \textbf{M}. Restarting the process again until the LDA model converges and the topic and assignment are stale. The eventual quality of the model depends on the assumed hyper parameters $\alpha$ and $\beta$ and parameters $\theta$ and $\varphi$. For a better understanding of the parameters take a look at section \ref{theory:alphabeta} and section \ref{theory:thetavarphi}.
+In the original LDA model, assignments of words get updated every iteration through the corpus \textbf{M}. Restarting the process again until the LDA model converges and the topic and assignment are stale. The eventual quality of the model depends on the assumed hyper parameters $\alpha$ and $\beta$ and parameters $\theta$ and $\varphi$. For a better understanding of the parameters take a look at Section \ref{theory:alphabeta} and Section \ref{theory:thetavarphi}.
 
 \begin{figure}
     \centering
     \includegraphics[scale=0.6]{methodology/700px-Illustrating_LDA.jpg}
-    \caption{LDA applied to a document}
+    \caption{LDA applied to a document \cite{Blei2003}}
     \label{fig:LDA_example}
 \end{figure}
 
 \subsection{$\alpha$ and $\beta$ hyperparameters} \label{theory:alphabeta}
-The dirichlet is defined as the distribution over a distribution. Dirichlet is used to infer a posterior distribution after observations using a prior distribution \cite{Sethuraman2001APRIORS}. Hyperparameters are defined as parameters that assume a prior distribution before any evidence or information is taken into account. This distinguishes $\alpha$ and $\beta$ from the remaining parameters. $\alpha$ and $\beta$ are both dirichlet distributions. The hyperparameter value $\alpha$ is the parameter of the dirichlet prior on the per-document topic distributions. The result of a high value of $\alpha$ is a document with a mixture of most topics, while the low value leads to documents with more distinct topics. The $\alpha$ results in a corpus with distinct documents or more general documents topic assignments. The value $\beta$ is the parameter of the dirichlet prior of a word in a topic. A high value for $\beta$ means that the topics consist of distinct words, the low value of $\beta$ assumes topics are more generative. The $\beta$ will influence the general distribution of words in topics in the output of topics. 
-We base our $\alpha$ and $\beta$ on earlier research of Blei which recommends that $\alpha $=$ 1.0/T$ with $\beta $=$ 0.01$ which shows to work great with many different corpus.
+The Dirichlet is defined as the distribution over a distribution. Dirichlet is used to infer a posterior distribution after observations using a prior distribution \cite{Sethuraman2001APRIORS}. Hyperparameters are defined as parameters that assume a prior distribution before any evidence or information is taken into account. This distinguishes $\alpha$ and $\beta$ from the remaining parameters. $\alpha$ and $\beta$ are both Dirichlet distributions. The hyperparameter value $\alpha$ is the parameter of the Dirichlet prior on the per-document topic distributions. The result of a high value of $\alpha$ is a document with a mixture of most topics, while the low value leads to documents with more distinct topics. The $\alpha$ results in a corpus with distinct documents or more general documents topic assignments. The value $\beta$ is the parameter of the Dirichlet prior of a word in a topic. A high value for $\beta$ means that the topics consist of distinct words, the low value of $\beta$ assumes topics are more generative. The $\beta$ will influence the general distribution of words in topics in the output of topics. 
+We base our $\alpha$ and $\beta$ on earlier research of Blei which recommends that $\alpha $=$ 1.0/T$ with $\beta $=$ 0.01$ which shows to work great with many different corpora.
 
 \subsection{$\theta$, $\varphi$ parameters}\label{theory:thetavarphi}
 The parameters $\theta, \varphi$ are dependent on the prior distributions $\alpha$ and $\beta$. $\theta$ is the document-topic distribution. $\theta$ is the weight of a topic in a document and because $\alpha$ is a prior distribution, $\theta$ assumes a distribution based on the previous assigned distribution. 
 In the same way $\varphi$ is the weight of words in a topic. $\varphi$ in this case is dependent on the $\beta$.
 
-\subsection{Online Latent dirichlet allocation} \label{theory:onlinelda}
-The online variant of LDA was introduced  by Hoffman et al. in 2010.\cite{Hoffman2010OnlineAllocation} This new variation dealt with the problem earlier LDA models struggled with. The problem that LDA had was the computing of huge collections of documents. The online LDA can be used for massive- and streaming documents without losing performance compared to the original LDA model, because it analyses the documents in batches instead of single observations with stochastic (random) optimisation \cite{Beaver2012}. It simply allows models to be updated rather then being computed again. This research also assumes the online model for similar performance and improved computational time. 
+\subsection{Online Latent Dirichlet allocation} \label{theory:onlinelda}
+The online variant of LDA was introduced  by Hoffman et al. in 2010.\cite{Hoffman2010OnlineAllocation} This new variation dealt with the problem earlier LDA models struggled with. The problem that LDA had was the computing of huge collections of documents. The online LDA can be used for massive- and streaming documents without losing performance compared to the original LDA model, because it analyses the documents in batches instead of single observations with stochastic (random) optimisation \cite{Beaver2012}. It simply allows models to be updated rather than being computed again. This research also assumes the online model for similar performance and improved computational time. 
 
 

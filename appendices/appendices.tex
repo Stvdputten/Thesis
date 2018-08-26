@@ -2,7 +2,7 @@
 
 \section{Capgemini server dataset}\label{appendices:serverdata}
 
-This section serves as a complete overview of the data. The server data that is provide by Capgemini has been developed by their own developers and as such contains a custom schema. Event logs contain multiple columns shown in table \ref{tab:tableservercol} in an order fashion. Due to privacy reason, we will not show the data that is contained within the rows. Only two columns are worth discussing: syslog.body, syslog.severity. The former contained a lot of server specific data. This event log has been formatted to have a lot in common with the syslog message standard. The latter contains the type of message the event log, e.g. 0 indicating an emergency message. Due to a formatting error discovered during the research, the original syslog.severity has been lost and is always labelled 6 meaning informational. 
+This section serves as a complete overview of the data. The server data that is provide by Capgemini has been developed by their own developers and as such contains a custom schema. Event logs contain multiple columns shown in Table \ref{tab:tableservercol} in an order fashion. Due to privacy reason, we will not show the data that is contained within the rows. Only two columns are worth discussing: syslog.body, syslog.severity. The former contained a lot of server specific data. This event log has been formatted to have a lot in common with the syslog message standard. The latter contains the type of message the event log, e.g. 0 indicating an emergency message. Due to a formatting error discovered during the research, the original syslog.severity has been lost and is always labelled 6 meaning informational. 
 
 \begin{table}[h]
 \centering
@@ -19,11 +19,12 @@ This section serves as a complete overview of the data. The server data that is 
 \label{tab:tableservercol}
 \end{table}
 
-After manually inspecting the data we extracted only 4 columns named: hostname, uuid, syslog.body, timestamp. A custom solution had to be written to transform the servers logs into a use able matrix. These steps are explained in section \ref{methodology:dataset}. 
+After manually inspecting the data we extracted only 4 columns named: hostname, uuid, syslog.body, timestamp. A custom solution had to be written to transform the servers logs into a use able matrix. These steps are explained in Section \ref{methodology:dataset}. 
 
 \FloatBarrier
 
 \section{pyLDAvis}\label{appendices:pyldavis}
+\vspace{100px}
 
  \begin{figure}[!h]
     \centering
